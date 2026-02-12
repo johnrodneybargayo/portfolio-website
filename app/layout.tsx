@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import Sidebar from '@/app/components/Sidebar'
 import './globals.css'
 
 const _geist = Geist({ subsets: ["latin"] });
@@ -36,8 +37,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${_geist.className} antialiased`}>
-        {children}
+      <body className={`${_geist.className} antialiased bg-slate-900`}>
+        <Sidebar />
+        <div className="transition-all duration-300">
+          {children}
+        </div>
         <Analytics />
       </body>
     </html>
