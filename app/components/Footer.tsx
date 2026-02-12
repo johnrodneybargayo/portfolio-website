@@ -52,7 +52,7 @@ export default function Footer() {
             </a>
           </div>
           <p className="text-center text-slate-500 text-sm">
-            © 2024 John Rodney Bargayo. All rights reserved.
+            © 2026 John Rodney Bargayo. All rights reserved.
           </p>
         </div>
       </div>
