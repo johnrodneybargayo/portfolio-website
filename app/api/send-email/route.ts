@@ -1,27 +1,39 @@
-import { NextResponse } from 'next/server'
-import { Resend } from 'resend'
+import { Resend } from 'resend';
+import { NextRequest, NextResponse } from 'next/server';
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+const resend = new Resend(process.env.RESEND_API_KEY);
 
-export async function POST(request: Request) {
-  const { name, email, message } = await request.json()
-
+export async function POST(request: NextRequest) {
   try {
-    const data = await resend.emails.send({
-      from: 'Portfolio Contact <onboarding@resend.dev>',
-      to: ['johnrodney.bargayo@gmail.com'],
-      subject: `New message from ${name}`,
-      html: `
-        <h1>New Contact Form Submission</h1>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong> ${message}</p>
-      `
-    })
+    const { name, email, subject, message } = await request.json();
 
-    return NextResponse.json(data)
+    if (!name || !email || !subject || !message) {
+      return NextResponse.json(
+        { error: 'Missing required fields' },
+        { status: 400 }
+      );
+    }
+
+    const result = await resend.emails.send({
+      from: 'onboarding@resend.dev',
+      to: 'johnrodney.bargayo@gmail.com',
+      subject: `New Contact Form Submission: ${subject}`,
+      html: `
+        <h2>New Contact Form Submission</h2>
+        <p><strong>From:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Subject:</strong> ${subject}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message.replace(/\n/g, '<br>')}</p>
+      `,
+    });
+
+    return NextResponse.json(result);
   } catch (error) {
-    return NextResponse.json({ error })
+    console.error('Error sending email:', error);
+    return NextResponse.json(
+      { error: 'Failed to send email' },
+      { status: 500 }
+    );
   }
 }
-

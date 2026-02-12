@@ -1,162 +1,151 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import { ExternalLink } from 'lucide-react'
+'use client';
 
-const projects = [
-  {
-    category: "Business Solutions",
-    items: [
-      {
-        title: 'Careero',
-        description: 'A comprehensive career development platform helping professionals advance their careers.',
-        link: 'https://careero.com',
-        technologies: ['React', 'Node.js', 'MongoDB', 'Express', 'AWS'],
-        type: 'Business Platform'
-      },
-      {
-        title: 'ProductHQ',
-        description: 'A product feedback and feature request management platform helping teams build better products with customer feedback.',
-        link: 'https://producthq.io/',
-        technologies: ['Next.js', 'React', 'Node.js', 'PostgreSQL', 'Tailwind CSS'],
-        type: 'Business Platform'
-      },
-      {
-        title: 'Curtis INT CRM',
-        description: 'An integrated CRM system with service and support portals for customer management.',
-        link: 'https://service.curtiscss.com/',
-        technologies: ['PHP', 'MySQL', 'Vue.js', 'Laravel', 'Bootstrap'],
-        type: 'Enterprise Software'
-      },
-      {
-        title: 'Empire One Contact Center',
-        description: 'Professional contact center and customer service solutions platform.',
-        link: 'https://empireonecontactcenter.com/',
-        technologies: ['WordPress', 'PHP', 'MySQL', 'Custom Theme', 'JavaScript'],
-        type: 'Corporate Website'
-      },
-      {
-        title: 'Empire One Credit',
-        description: 'Financial services and credit solutions platform for Canadian customers.',
-        link: 'https://empireonecredit.ca/',
-        technologies: ['WordPress', 'PHP', 'MySQL', 'Custom Plugin Development'],
-        type: 'Financial Services'
-      }
-    ]
-  },
-  {
-    category: "Current Projects",
-    items: [
-      {
-        title: 'VerbiVibe',
-        description: 'An interactive presentation and audience engagement platform similar to Mentimeter, allowing real-time audience participation.',
-        link: 'https://www.verbivibe.com/login',
-        technologies: ['Next.js', 'React', 'WebSocket', 'PostgreSQL', 'Prisma'],
-        type: 'SaaS Platform'
-      },
-      {
-        title: 'KeystrokeQuest',
-        description: 'A code typing test platform for developers to practice and improve their coding speed and accuracy.',
-        link: 'https://htas2wdun2k.vercel.app/?vercelToolbarCode=Ty129TZvCqESc2x',
-        technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Firebase'],
-        type: 'Developer Tool'
-      },
-      {
-        title: 'Construction Demo',
-        description: 'A modern website template for construction companies featuring responsive design and dynamic content.',
-        link: 'https://v7gipcjbs9bvqsav.vercel.app/',
-        technologies: ['Next.js', 'React', 'Tailwind CSS', 'Framer Motion'],
-        type: 'Website Template'
-      }
-    ]
-  },
-  {
-    category: "Community Platforms",
-    items: [
-      {
-        title: 'Bangkok Women',
-        description: 'A community platform for women in Bangkok featuring articles, events, and networking opportunities.',
-        link: 'https://bangkok-women.com/',
-        technologies: ['WordPress', 'PHP', 'MySQL', 'Custom Plugin Development'],
-        type: 'Community Platform'
-      },
-      {
-        title: 'Peru Dating',
-        description: 'A dating platform specifically designed for the Peruvian community with unique cultural features.',
-        link: 'https://perudating.com/',
-        technologies: ['PHP', 'MySQL', 'jQuery', 'Bootstrap'],
-        type: 'Dating Platform'
-      },
-      {
-        title: 'Cebu Insights',
-        description: 'A community news and information platform for Cebu residents and visitors.',
-        link: 'https://cebuinsights.com/',
-        technologies: ['WordPress', 'PHP', 'MySQL', 'SEO Optimization'],
-        type: 'Community Portal'
-      }
-    ]
-  }
-]
+import Navigation from '@/app/components/Navigation';
+import Footer from '@/app/components/Footer';
+import { ExternalLink } from 'lucide-react';
+import Image from 'next/image';
 
-export default function Portfolio() {
+export default function PortfolioPage() {
+  const projects = [
+    {
+      id: 1,
+      title: 'ProductHQ',
+      link: 'https://producthq.io/',
+      category: 'Business Solution',
+      image: 'https://api.microlink.io?url=https://producthq.io/&screenshot=true&meta=false&embed=screenshot.url',
+    },
+    {
+      id: 2,
+      title: 'Curtis Service',
+      link: 'https://service.curtiscss.com/',
+      category: 'Business Solution',
+      image: 'https://api.microlink.io?url=https://service.curtiscss.com/&screenshot=true&meta=false&embed=screenshot.url',
+    },
+    {
+      id: 3,
+      title: 'Curtis Support',
+      link: 'https://support.curtiscss.com/',
+      category: 'Business Solution',
+      image: 'https://api.microlink.io?url=https://support.curtiscss.com/&screenshot=true&meta=false&embed=screenshot.url',
+    },
+    {
+      id: 4,
+      title: 'Empire One Contact Center',
+      link: 'https://empireonecontactcenter.com/',
+      category: 'Business Solution',
+      image: 'https://api.microlink.io?url=https://empireonecontactcenter.com/&screenshot=true&meta=false&embed=screenshot.url',
+    },
+    {
+      id: 5,
+      title: 'Empire One Credit',
+      link: 'https://empireonecredit.ca/',
+      category: 'Business Solution',
+      image: 'https://api.microlink.io?url=https://empireonecredit.ca/&screenshot=true&meta=false&embed=screenshot.url',
+    },
+    {
+      id: 6,
+      title: 'Bangkok Women',
+      link: 'https://bangkok-women.com/',
+      category: 'Community Platform',
+      image: 'https://api.microlink.io?url=https://bangkok-women.com/&screenshot=true&meta=false&embed=screenshot.url',
+    },
+    {
+      id: 7,
+      title: 'Peru Dating',
+      link: 'https://perudating.com/',
+      category: 'Community Platform',
+      image: 'https://api.microlink.io?url=https://perudating.com/&screenshot=true&meta=false&embed=screenshot.url',
+    },
+    {
+      id: 8,
+      title: 'Cebu Insights',
+      link: 'https://cebuinsights.com/',
+      category: 'Community Platform',
+      image: 'https://api.microlink.io?url=https://cebuinsights.com/&screenshot=true&meta=false&embed=screenshot.url',
+    },
+    {
+      id: 9,
+      title: 'Careero',
+      link: 'https://careero.com/',
+      category: 'Business Solution',
+      image: 'https://api.microlink.io?url=https://careero.com/&screenshot=true&meta=false&embed=screenshot.url',
+    },
+    {
+      id: 10,
+      title: 'Labour Hire and Recruitment',
+      link: 'https://labourhireandrecruitment.com.au',
+      category: 'Business Solution',
+      image: 'https://api.microlink.io?url=https://labourhireandrecruitment.com.au&screenshot=true&meta=false&embed=screenshot.url',
+    },
+    {
+      id: 11,
+      title: 'VerbiVibe',
+      link: 'https://www.verbivibe.com/login',
+      category: 'Current Project',
+      image: 'https://scontent.fceb7-1.fna.fbcdn.net/v/t39.30808-6/411068017_7561810227171334_4227971823188484885_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeGkLWkjaGmsac5w_WuGmgZSVII8DFubZd1UgjwMW5tl3S80nRPKLK_7t-rdKSu9vsui_axtvxKlqg0oJRyJSoDu&_nc_ohc=hKsmh3JbfZwQ7kNvgGXQdl2&_nc_zt=23&_nc_ht=scontent.fceb7-1.fna&_nc_gid=A1NKt6TSpo3NxrhzQkNTFaw&oh=00_AYB685OJytoezJKyS_oyHgIGVkly9s3pZtBK21ECsdBzcQ&oe=6760C3AC',
+    },
+    {
+      id: 12,
+      title: 'KeystrokeQuest',
+      link: 'https://htas2wdun2k.vercel.app/?vercelToolbarCode=Ty129TZvCqESc2x',
+      category: 'Current Project',
+      image: 'https://api.microlink.io?url=https://htas2wdun2k.vercel.app/&screenshot=true&meta=false&embed=screenshot.url',
+    },
+    {
+      id: 13,
+      title: 'Demo Construction Website',
+      link: 'https://v7gipcjbs9bvqsav.vercel.app/',
+      category: 'Current Project',
+      image: 'https://api.microlink.io?url=https://v7gipcjbs9bvqsav.vercel.app/&screenshot=true&meta=false&embed=screenshot.url',
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-gray-900 text-white relative">
-      <div className="absolute inset-0 z-0">
-        <div className="w-full h-full bg-gradient-to-br from-blue-900 via-gray-900 to-purple-900"></div>
-      </div>
-      <main className="container mx-auto px-6 py-20 relative z-10">
-        <h1 className="text-4xl font-bold mb-12 text-center">My Portfolio</h1>
-        
-        {projects.map((category, index) => (
-          <div key={index} className="mb-20">
-            <h2 className="text-2xl font-bold mb-8 text-blue-400">{category.category}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {category.items.map((project, projectIndex) => (
-                <div 
-                  key={projectIndex} 
-                  className="bg-gray-800 bg-opacity-80 rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105"
-                >
-                  <div className="relative h-48">
-                    <Image 
-                      src={`https://api.microlink.io?url=${encodeURIComponent(project.link)}&screenshot=true&meta=false&embed=screenshot.url`}
-                      alt={project.title}
-                      width={400}
-                      height={300}
-                      className="object-cover w-full h-full"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-xl font-bold text-white">{project.title}</h3>
-                      <Link 
-                        href={project.link}
-                        target="_blank"
-                        className="text-blue-400 hover:text-blue-300"
-                      >
-                        <ExternalLink className="w-5 h-5" />
-                      </Link>
-                    </div>
-                    <span className="inline-block bg-blue-500 text-white text-xs px-2 py-1 rounded-full mb-3">
-                      {project.type}
-                    </span>
-                    <p className="text-gray-300 mb-4 text-sm">{project.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech, techIndex) => (
-                        <span 
-                          key={techIndex}
-                          className="bg-gray-700 text-gray-300 text-xs px-2 py-1 rounded"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
+    <main className="bg-gray-900">
+      <Navigation />
+      
+      <section className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 pt-32 pb-20">
+        <div className="max-w-6xl mx-auto px-6">
+          <h1 className="text-5xl font-bold text-white mb-12 text-center">My Portfolio</h1>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.map((project) => (
+              <a
+                key={project.id}
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative overflow-hidden rounded-lg border border-gray-700 hover:border-blue-500 transition-all duration-300"
+              >
+                <div className="relative w-full h-48 bg-gray-800">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22200%22%3E%3Crect fill=%22%23374151%22 width=%22400%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2216%22 fill=%22%23fff%22 text-anchor=%22middle%22 dy=%22.3em%22%3E' + encodeURIComponent(project.title) + '%3C/text%3E%3C/svg%3E';
+                    }}
+                  />
+                </div>
+
+                <div className="p-6 bg-gray-800 group-hover:bg-gray-700 transition-colors duration-300">
+                  <span className="inline-block px-3 py-1 mb-3 text-xs font-bold text-blue-500 bg-blue-500 bg-opacity-20 rounded-full">
+                    {project.category}
+                  </span>
+                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-500 transition-colors duration-300">
+                    {project.title}
+                  </h3>
+                  <div className="flex items-center gap-2 text-gray-400 group-hover:text-blue-500 transition-colors duration-300">
+                    Visit <ExternalLink size={16} />
                   </div>
                 </div>
-              ))}
-            </div>
+              </a>
+            ))}
           </div>
-        ))}
-      </main>
-    </div>
-  )
-}
+        </div>
+      </section>
 
+      <Footer />
+    </main>
+  );
+}

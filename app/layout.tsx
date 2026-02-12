@@ -1,36 +1,45 @@
+import type { Metadata } from 'next'
+import { Geist, Geist_Mono } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
-import { Inter } from 'next/font/google'
-import Navigation from './components/Navigation'
-import Footer from './components/Footer'
-import Script from 'next/script'
 
-const inter = Inter({ subsets: ['latin'] })
+const _geist = Geist({ subsets: ["latin"] });
+const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Rod - Freelance Fullstack Web Developer',
-  description: 'Personal portfolio of John Rodney Bargayo, a creative fullstack developer',
-    generator: 'v0.app'
+  description: 'Portfolio of John Rodney Bargayo, a freelance fullstack web developer specializing in modern web applications.',
+  generator: 'v0.app',
+  icons: {
+    icon: [
+      {
+        url: '/icon-light-32x32.png',
+        media: '(prefers-color-scheme: light)',
+      },
+      {
+        url: '/icon-dark-32x32.png',
+        media: '(prefers-color-scheme: dark)',
+      },
+      {
+        url: '/icon.svg',
+        type: 'image/svg+xml',
+      },
+    ],
+    apple: '/apple-icon.png',
+  },
 }
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode
-}) {
+}>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" href="/favicon.ico" />
-        <Script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" strategy="beforeInteractive" />
-        <Script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js" strategy="beforeInteractive" />
-        <Script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/MotionPathPlugin.min.js" strategy="beforeInteractive" />
-      </head>
-      <body className={inter.className}>
-        <Navigation />
+      <body className={`${_geist.className} antialiased`}>
         {children}
-        <Footer />
+        <Analytics />
       </body>
     </html>
   )
 }
-
