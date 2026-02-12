@@ -62,37 +62,6 @@ export default function ContactPage() {
                   </div>
                 </div>
               </div>
-
-              {/* Social Links */}
-              <div className="mt-8 md:mt-12">
-                <h3 className="text-white font-bold mb-3 md:mb-4 text-base md:text-lg">Follow Me</h3>
-                <div className="flex flex-wrap gap-2 md:gap-3">
-                  <a 
-                    href="https://www.linkedin.com/in/rodbargayo/" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="px-3 md:px-4 py-2 bg-slate-800 text-blue-400 hover:bg-blue-500/20 rounded-lg border border-slate-700 hover:border-blue-400 transition-all duration-200 text-xs md:text-sm"
-                  >
-                    LinkedIn
-                  </a>
-                  <a 
-                    href="https://www.facebook.com/lockdown15100" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="px-3 md:px-4 py-2 bg-slate-800 text-blue-400 hover:bg-blue-500/20 rounded-lg border border-slate-700 hover:border-blue-400 transition-all duration-200 text-xs md:text-sm"
-                  >
-                    Facebook
-                  </a>
-                  <a 
-                    href="https://www.instagram.com/juanbargayo/" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="px-3 md:px-4 py-2 bg-slate-800 text-blue-400 hover:bg-blue-500/20 rounded-lg border border-slate-700 hover:border-blue-400 transition-all duration-200 text-xs md:text-sm"
-                  >
-                    Instagram
-                  </a>
-                </div>
-              </div>
             </div>
           </div>
 
