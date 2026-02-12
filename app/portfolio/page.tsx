@@ -78,14 +78,6 @@ export default function PortfolioPage() {
       image: 'https://api.microlink.io?url=https://labourhireandrecruitment.com.au&screenshot=true&meta=false&embed=screenshot.url',
     },
     {
-      id: 11,
-      title: 'VerbiVibe',
-      link: 'https://www.verbivibe.com/login',
-      category: 'Current Project',
-      description: 'Interactive presentation tool',
-      image: 'https://scontent.fceb7-1.fna.fbcdn.net/v/t39.30808-6/411068017_7561810227171334_4227971823188484885_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeGkLWkjaGmsac5w_WuGmgZSVII8DFubZd1UgjwMW5tl3S80nRPKLK_7t-rdKSu9vsui_axtvxKlqg0oJRyJSoDu&_nc_ohc=hKsmh3JbfZwQ7kNvgGXQdl2&_nc_zt=23&_nc_ht=scontent.fceb7-1.fna&_nc_gid=A1NKt6TSpo3NxrhzQkNTFaw&oh=00_AYB685OJytoezJKyS_oyHgIGVkly9s3pZtBK21ECsdBzcQ&oe=6760C3AC',
-    },
-    {
       id: 12,
       title: 'KeystrokeQuest',
       link: 'https://htas2wdun2k.vercel.app/',
