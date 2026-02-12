@@ -37,11 +37,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${_geist.className} antialiased bg-slate-900`}>
+      <body className={`${_geist.className} antialiased bg-slate-900 m-0 p-0`}>
         <Sidebar />
-        <div className="transition-all duration-300">
+        <main className="transition-all duration-300">
           {children}
-        </div>
+        </main>
         <Analytics />
       </body>
     </html>
