@@ -12,16 +12,30 @@ export default function Hero() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Text animation
       gsap.fromTo(
         textRef.current,
         { opacity: 0, y: 30 },
         { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }
       );
 
+      // Image entrance animation
       gsap.fromTo(
         imageRef.current,
         { opacity: 0, scale: 0.8 },
         { opacity: 1, scale: 1, duration: 1, ease: 'power3.out', delay: 0.2 }
+      );
+
+      // Floating animation for the image
+      gsap.to(
+        imageRef.current,
+        {
+          y: -20,
+          duration: 3,
+          ease: 'sine.inOut',
+          repeat: -1,
+          yoyo: true,
+        }
       );
     }, heroRef);
 
@@ -38,6 +52,31 @@ export default function Hero() {
         <div className="absolute top-20 left-10 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
         <div className="absolute top-40 right-10 w-80 h-80 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse animation-delay-2000"></div>
         <div className="absolute bottom-20 left-1/2 w-80 h-80 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl animate-pulse animation-delay-4000"></div>
+      </div>
+
+      {/* 3D Floating Shapes */}
+      <div className="absolute inset-0 perspective pointer-events-none">
+        {/* Floating Cube 1 */}
+        <div className="absolute top-32 left-10 w-24 h-24 opacity-10 animate-float" style={{ perspective: '1000px' }}>
+          <div className="relative w-full h-full" style={{ transformStyle: 'preserve-3d', animation: 'float 6s ease-in-out infinite' }}>
+            <div className="absolute w-24 h-24 bg-blue-500 border border-blue-400 rounded-lg" style={{ transform: 'translateZ(48px)' }}></div>
+            <div className="absolute w-24 h-24 bg-blue-600 border border-blue-500 rounded-lg" style={{ transform: 'rotateY(90deg) translateZ(48px)' }}></div>
+            <div className="absolute w-24 h-24 bg-cyan-500 border border-cyan-400 rounded-lg" style={{ transform: 'rotateY(180deg) translateZ(48px)' }}></div>
+          </div>
+        </div>
+
+        {/* Floating Cube 2 */}
+        <div className="absolute bottom-40 right-20 w-20 h-20 opacity-10 animate-float-slow" style={{ perspective: '1000px' }}>
+          <div className="relative w-full h-full" style={{ transformStyle: 'preserve-3d', animation: 'float 8s ease-in-out infinite reverse' }}>
+            <div className="absolute w-20 h-20 bg-cyan-500 border border-cyan-400 rounded-lg" style={{ transform: 'translateZ(40px)' }}></div>
+            <div className="absolute w-20 h-20 bg-blue-500 border border-blue-400 rounded-lg" style={{ transform: 'rotateY(90deg) translateZ(40px)' }}></div>
+          </div>
+        </div>
+
+        {/* Floating Sphere */}
+        <div className="absolute top-1/4 right-1/4 w-32 h-32 opacity-15">
+          <div className="w-full h-full bg-gradient-to-br from-blue-400 to-cyan-500 rounded-full filter blur-xl animate-pulse animation-delay-2000"></div>
+        </div>
       </div>
 
       {/* Content */}
