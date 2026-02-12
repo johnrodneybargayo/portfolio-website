@@ -88,10 +88,10 @@ export default function Hero() {
             </h1>
           </div>
           <p className="text-2xl font-semibold text-slate-300">
-            Freelance Fullstack Web Developer
+            Freelance Web Developer
           </p>
           <p className="text-lg text-slate-400 leading-relaxed">
-            Building elegant, responsive, and high-performance web applications with modern technologies. I specialize in creating seamless digital experiences that combine aesthetics with functionality.
+            Specializing in WordPress, Wix, Shopify, Framer, Beaver Builder, and Divi. I create stunning, responsive websites and e-commerce solutions tailored to your business needs with a focus on user experience and conversion optimization.
           </p>
           <div className="flex gap-4 pt-4">
             <Link

@@ -8,8 +8,8 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Rod - Freelance Fullstack Web Developer',
-  description: 'Portfolio of John Rodney Bargayo, a freelance fullstack web developer specializing in modern web applications.',
+  title: 'Rod - Freelance Web Developer',
+  description: 'Portfolio of John Rodney Bargayo, a freelance web developer specializing in WordPress, Wix, Shopify, Framer, Beaver Builder, and Divi.',
   generator: 'v0.app',
   icons: {
     icon: [
