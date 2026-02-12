@@ -1,127 +1,165 @@
-'use client'
+'use client';
 
-import React, { useState } from 'react'
-import { Mail, Phone, MapPin, Facebook, Linkedin, Instagram } from 'lucide-react'
+import Footer from '@/app/components/Footer';
+import { Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
 
-function Contact() {
-  const [sending, setSending] = useState(false)
-  const [message, setMessage] = useState('')
+const phoneNumber = '+6399967788865';
+const whatsappLink = `https://wa.me/${phoneNumber.replace(/\D/g, '')}`;
+const viberLink = `viber://chat?number=${phoneNumber.replace(/\D/g, '')}`;
 
-  async function handleSubmit(event) {
-    event.preventDefault()
-    setSending(true)
-    setMessage('')
-
-    const form = event.target
-    const formData = new FormData(form)
-
-    try {
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        body: formData
-      })
-
-      if (response.ok) {
-        setMessage('Message sent successfully!')
-        form.reset()
-      } else {
-        setMessage('Failed to send message')
-      }
-    } catch (error) {
-      setMessage('Error sending message')
-    }
-
-    setSending(false)
-  }
-
+export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
-      <div className="container mx-auto px-6 py-20">
-        <h1 className="text-4xl font-bold mb-12 text-center">Get In Touch</h1>
-        <div className="grid md:grid-cols-2 gap-12">
-          <div className="bg-gray-800 p-8 rounded-lg">
-            <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
-            <div className="space-y-4">
-              <div className="flex items-center">
-                <Mail className="w-6 h-6 mr-4 text-blue-400" />
-                <span>johnrodney.bargayo@gmail.com</span>
+    <main className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 min-h-screen py-20">
+      <section className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="mb-16">
+          <h1 className="text-5xl font-bold text-white mb-4">Get In Touch</h1>
+          <p className="text-xl text-slate-400">
+            Let's connect and discuss your next project
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+          {/* Contact Information */}
+          <div className="space-y-8">
+            <div>
+              <h2 className="text-3xl font-bold text-white mb-8">Contact Information</h2>
+              
+              <div className="space-y-6">
+                {/* Email */}
+                <div className="flex items-start gap-4 p-6 bg-slate-800/50 rounded-lg border border-slate-700 hover:border-blue-500/50 transition-colors duration-200">
+                  <Mail className="text-blue-400 mt-1 flex-shrink-0" size={24} />
+                  <div>
+                    <h3 className="text-white font-bold mb-2">Email</h3>
+                    <a href="mailto:johnrodney.bargayo@gmail.com" className="text-slate-400 hover:text-blue-400 transition-colors duration-200">
+                      johnrodney.bargayo@gmail.com
+                    </a>
+                  </div>
+                </div>
+
+                {/* Phone */}
+                <div className="flex items-start gap-4 p-6 bg-slate-800/50 rounded-lg border border-slate-700 hover:border-blue-500/50 transition-colors duration-200">
+                  <Phone className="text-blue-400 mt-1 flex-shrink-0" size={24} />
+                  <div>
+                    <h3 className="text-white font-bold mb-2">Phone</h3>
+                    <a href={`tel:${phoneNumber}`} className="text-slate-400 hover:text-blue-400 transition-colors duration-200">
+                      {phoneNumber}
+                    </a>
+                  </div>
+                </div>
+
+                {/* Location */}
+                <div className="flex items-start gap-4 p-6 bg-slate-800/50 rounded-lg border border-slate-700 hover:border-blue-500/50 transition-colors duration-200">
+                  <MapPin className="text-blue-400 mt-1 flex-shrink-0" size={24} />
+                  <div>
+                    <h3 className="text-white font-bold mb-2">Location</h3>
+                    <p className="text-slate-400">
+                      Philippines
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className="flex items-center">
-                <Phone className="w-6 h-6 mr-4 text-blue-400" />
-                <span>+639661641562</span>
-              </div>
-              <div className="flex items-center">
-                <MapPin className="w-6 h-6 mr-4 text-blue-400" />
-                <span>Cebu City, Philippines</span>
-              </div>
-            </div>
-            <div className="mt-8">
-              <h3 className="text-xl font-semibold mb-4">Connect with me</h3>
-              <div className="flex space-x-4">
-                <a href="https://www.facebook.com/lockdown15100" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300">
-                  <Facebook className="w-6 h-6" />
-                </a>
-                <a href="https://www.instagram.com/juanbargayo/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300">
-                  <Instagram className="w-6 h-6" />
-                </a>
-                <a href="https://www.linkedin.com/in/rodbargayo/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300">
-                  <Linkedin className="w-6 h-6" />
-                </a>
+
+              {/* Social Links */}
+              <div className="mt-12">
+                <h3 className="text-white font-bold mb-4 text-lg">Follow Me</h3>
+                <div className="flex flex-wrap gap-3">
+                  <a 
+                    href="https://www.linkedin.com/in/rodbargayo/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="px-4 py-2 bg-slate-800 text-blue-400 hover:bg-blue-500/20 rounded-lg border border-slate-700 hover:border-blue-400 transition-all duration-200"
+                  >
+                    LinkedIn
+                  </a>
+                  <a 
+                    href="https://www.facebook.com/lockdown15100" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="px-4 py-2 bg-slate-800 text-blue-400 hover:bg-blue-500/20 rounded-lg border border-slate-700 hover:border-blue-400 transition-all duration-200"
+                  >
+                    Facebook
+                  </a>
+                  <a 
+                    href="https://www.instagram.com/juanbargayo/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="px-4 py-2 bg-slate-800 text-blue-400 hover:bg-blue-500/20 rounded-lg border border-slate-700 hover:border-blue-400 transition-all duration-200"
+                  >
+                    Instagram
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-          <div className="bg-gray-800 p-8 rounded-lg">
-            <h2 className="text-2xl font-bold mb-6">Send Me a Message</h2>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-300">Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  className="mt-1 block w-full rounded-md bg-gray-700 border-gray-600 text-white shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-                />
+
+          {/* Contact Methods */}
+          <div className="space-y-6">
+            <h2 className="text-3xl font-bold text-white mb-8">Quick Contact</h2>
+            
+            {/* WhatsApp Button */}
+            <a
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-between gap-4 p-6 bg-gradient-to-r from-green-500/20 to-green-600/20 hover:from-green-500/30 hover:to-green-600/30 rounded-lg border border-green-500/50 hover:border-green-400 transition-all duration-200 group"
+            >
+              <div className="flex items-center gap-4">
+                <div className="p-3 bg-green-500/20 group-hover:bg-green-500/30 rounded-lg">
+                  <MessageCircle className="text-green-400" size={28} />
+                </div>
+                <div>
+                  <h3 className="text-white font-bold text-lg">WhatsApp</h3>
+                  <p className="text-slate-400 text-sm">Send me a message on WhatsApp</p>
+                </div>
               </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-300">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  className="mt-1 block w-full rounded-md bg-gray-700 border-gray-600 text-white shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-                />
+              <span className="text-green-400 group-hover:translate-x-1 transition-transform duration-200">→</span>
+            </a>
+
+            {/* Viber Button */}
+            <a
+              href={viberLink}
+              className="flex items-center justify-between gap-4 p-6 bg-gradient-to-r from-purple-500/20 to-purple-600/20 hover:from-purple-500/30 hover:to-purple-600/30 rounded-lg border border-purple-500/50 hover:border-purple-400 transition-all duration-200 group"
+            >
+              <div className="flex items-center gap-4">
+                <div className="p-3 bg-purple-500/20 group-hover:bg-purple-500/30 rounded-lg">
+                  <MessageCircle className="text-purple-400" size={28} />
+                </div>
+                <div>
+                  <h3 className="text-white font-bold text-lg">Viber</h3>
+                  <p className="text-slate-400 text-sm">Call or message me on Viber</p>
+                </div>
               </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-300">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={5}
-                  required
-                  className="mt-1 block w-full rounded-md bg-gray-700 border-gray-600 text-white shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-                ></textarea>
+              <span className="text-purple-400 group-hover:translate-x-1 transition-transform duration-200">→</span>
+            </a>
+
+            {/* Email Option */}
+            <a
+              href="mailto:johnrodney.bargayo@gmail.com"
+              className="flex items-center justify-between gap-4 p-6 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 hover:from-blue-500/30 hover:to-cyan-500/30 rounded-lg border border-blue-500/50 hover:border-blue-400 transition-all duration-200 group"
+            >
+              <div className="flex items-center gap-4">
+                <div className="p-3 bg-blue-500/20 group-hover:bg-blue-500/30 rounded-lg">
+                  <Mail className="text-blue-400" size={28} />
+                </div>
+                <div>
+                  <h3 className="text-white font-bold text-lg">Email</h3>
+                  <p className="text-slate-400 text-sm">Send me an email directly</p>
+                </div>
               </div>
-              <button
-                type="submit"
-                disabled={sending}
-                className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:opacity-50"
-              >
-                {sending ? 'Sending...' : 'Send Message'}
-              </button>
-              {message && (
-                <p className={`mt-4 text-sm ${message.includes('successfully') ? 'text-green-400' : 'text-red-400'}`}>
-                  {message}
-                </p>
-              )}
-            </form>
+              <span className="text-blue-400 group-hover:translate-x-1 transition-transform duration-200">→</span>
+            </a>
+
+            {/* Info Box */}
+            <div className="p-6 bg-slate-800/50 rounded-lg border border-slate-700 mt-8">
+              <p className="text-slate-300 text-sm leading-relaxed">
+                I'm available for freelance projects, consultations, and collaborations. Feel free to reach out through any of the methods above. I typically respond within 24 hours.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  )
+      </section>
+
+      <Footer />
+    </main>
+  );
 }
-
-export default Contact
-
