@@ -1,6 +1,7 @@
 'use client';
 
 import Footer from '@/app/components/Footer';
+import Stars from '@/app/components/Stars';
 import { ExternalLink } from 'lucide-react';
 
 export default function PortfolioPage() {
@@ -96,8 +97,9 @@ export default function PortfolioPage() {
   ];
 
   return (
-    <main className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 min-h-screen py-20">
-      <section className="max-w-7xl mx-auto px-6 lg:px-8">
+    <main className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 min-h-screen py-20 relative overflow-hidden">
+      <Stars />
+      <section className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <div className="mb-16">
           <h1 className="text-5xl font-bold text-white mb-4">Portfolio</h1>
           <p className="text-xl text-slate-400">

@@ -1,6 +1,7 @@
 'use client';
 
 import Footer from '@/app/components/Footer';
+import Stars from '@/app/components/Stars';
 import Image from 'next/image';
 
 export default function AboutPage() {
@@ -20,8 +21,9 @@ export default function AboutPage() {
   ];
 
   return (
-    <main className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 min-h-screen py-20">
-      <section className="max-w-7xl mx-auto px-6 lg:px-8 pb-20">
+    <main className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 min-h-screen py-20 relative overflow-hidden">
+      <Stars />
+      <section className="max-w-7xl mx-auto px-6 lg:px-8 pb-20 relative z-10">
         <div className="mb-16">
           <h1 className="text-5xl font-bold text-white mb-4">About Me</h1>
           <p className="text-xl text-slate-400">Web developer specializing in WordPress, Wix, Shopify, Framer, Beaver Builder, and Divi</p>
