@@ -13,8 +13,8 @@ export default function Stars() {
             left: Math.random() * 100 + '%',
             top: Math.random() * 100 + '%',
             opacity: Math.random() * 0.7 + 0.3,
-            animationDuration: Math.random() * 3 + 2 + 's',
-            animationDelay: Math.random() * 2 + 's',
+            animationDuration: Math.random() * 4 + 2 + 's',
+            animationDelay: Math.random() * 3 + 's',
           }}
         />
       ))}
