@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 
 export default function Sidebar() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const menuItems = [
     { name: 'Home', href: '/', icon: '🏠' },
@@ -17,7 +17,11 @@ export default function Sidebar() {
   useEffect(() => {
     const mainElement = document.querySelector('main');
     if (mainElement) {
-      mainElement.style.marginLeft = isOpen ? '256px' : '80px';
+      if (window.innerWidth < 768) {
+        mainElement.style.marginLeft = '0px';
+      } else {
+        mainElement.style.marginLeft = isOpen ? '256px' : '80px';
+      }
     }
   }, [isOpen]);
 
@@ -25,7 +29,7 @@ export default function Sidebar() {
     <aside
       className={`fixed left-0 top-0 h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 border-r border-slate-800/50 transition-all duration-300 z-50 ${
         isOpen ? 'w-64' : 'w-20'
-      }`}
+      } md:block hidden`}
     >
       {/* Header */}
       <div className="h-20 flex items-center justify-between px-4 border-b border-slate-800/50">

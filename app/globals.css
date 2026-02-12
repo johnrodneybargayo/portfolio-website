@@ -36,6 +36,13 @@
   .animate-float-slow {
     animation: float 8s ease-in-out infinite reverse;
   }
+
+  .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle linear infinite;
+  }
 }
 
 @keyframes float {
@@ -53,6 +60,15 @@
   }
   50% {
     transform: translateY(-40px) rotateX(-15deg);
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
   }
 }
 
