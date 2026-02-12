@@ -7,9 +7,11 @@ import Image from 'next/image';
 export default function AboutPage() {
   const skills = [
     { name: 'WordPress', icon: 'devicon-wordpress-plain' },
-    { name: 'Wix', icon: 'devicon-wix-original' },
     { name: 'Shopify', icon: 'devicon-shopify-plain' },
+    { name: 'Wix', icon: 'devicon-wix-plain' },
     { name: 'Framer', icon: 'devicon-framer-plain' },
+    { name: 'Beaver Builder', icon: 'devicon-wordpress-plain' },
+    { name: 'Divi', icon: 'devicon-wordpress-plain' },
     { name: 'HTML5', icon: 'devicon-html5-plain' },
     { name: 'CSS3', icon: 'devicon-css3-plain' },
     { name: 'JavaScript', icon: 'devicon-javascript-plain' },
