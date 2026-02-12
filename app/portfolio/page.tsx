@@ -46,14 +46,6 @@ export default function PortfolioPage() {
       image: 'https://api.microlink.io?url=https://empireonecontactcenter.com/&screenshot=true&meta=false&embed=screenshot.url',
     },
     {
-      id: 6,
-      title: 'Empire One Credit',
-      link: 'https://empireonecredit.ca/',
-      category: 'Financial',
-      description: 'Credit management system',
-      image: 'https://api.microlink.io?url=https://empireonecredit.ca/&screenshot=true&meta=false&embed=screenshot.url',
-    },
-    {
       id: 7,
       title: 'Bangkok Women',
       link: 'https://bangkok-women.com/',
