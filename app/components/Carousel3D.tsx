@@ -16,7 +16,7 @@ interface Carousel3DProps {
 
 function ProjectCard3D({ project, index, totalCards, onProjectClick }: ProjectCardProps) {
   const angle = (index / totalCards) * 360;
-  const radius = 180;
+  const radius = 120;
   const x = Math.cos((angle * Math.PI) / 180) * radius;
   const z = Math.sin((angle * Math.PI) / 180) * radius;
 
@@ -220,7 +220,7 @@ export default function Carousel3D({ projects, onProjectClick = () => {} }: Caro
           <p className="text-slate-400 text-xs md:text-sm">Drag to rotate • Click cards to view details</p>
         </div>
 
-        {/* 3D Carousel - Compact Left Aligned */}
+        {/* 3D Carousel - Wider Layout */}
         <div
           className="absolute left-0 top-1/2 -translate-y-1/2"
           style={{
@@ -230,9 +230,9 @@ export default function Carousel3D({ projects, onProjectClick = () => {} }: Caro
           }}
         >
           <div
-            className="absolute left-1/3 top-1/2 -translate-y-1/2"
+            className="absolute left-1/4 top-1/2 -translate-y-1/2"
             style={{
-              width: '600px',
+              width: '1000px',
               height: '350px',
               perspective: '1000px',
               transformStyle: 'preserve-3d',
