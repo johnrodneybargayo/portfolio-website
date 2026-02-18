@@ -7,6 +7,7 @@ interface ProjectCardProps {
   index: number;
   totalCards: number;
   onProjectClick: (projectId: number) => void;
+  rotation?: number;
 }
 
 interface Carousel3DProps {
@@ -14,11 +15,17 @@ interface Carousel3DProps {
   onProjectClick?: (projectId: number) => void;
 }
 
-function ProjectCard3D({ project, index, totalCards, onProjectClick }: ProjectCardProps) {
+function ProjectCard3D({ project, index, totalCards, onProjectClick, rotation }: ProjectCardProps & { rotation: number }) {
   const angle = (index / totalCards) * 360;
   const radius = 240;
-  const x = Math.cos((angle * Math.PI) / 180) * radius;
-  const z = Math.sin((angle * Math.PI) / 180) * radius;
+  
+  // Calculate z-index based on card position relative to viewer
+  // Normalize the angle relative to current rotation
+  let normalizedAngle = (angle - rotation) % 360;
+  if (normalizedAngle < 0) normalizedAngle += 360;
+  
+  // Cards in front (0-180 degrees) get higher z-index
+  let zIndex = Math.round((180 - Math.abs(normalizedAngle - 180)) / 2);
 
   return (
     <div
@@ -33,6 +40,7 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick }: ProjectCa
         marginTop: '-140px',
         marginLeft: '-120px',
         backfaceVisibility: 'hidden',
+        zIndex: zIndex,
       }}
     >
       {/* 3D Box Container */}
@@ -259,6 +267,7 @@ export default function Carousel3D({ projects, onProjectClick = () => {} }: Caro
                 index={index}
                 totalCards={projects.length}
                 onProjectClick={onProjectClick}
+                rotation={rotation}
               />
             ))}
           </div>
