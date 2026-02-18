@@ -286,10 +286,16 @@ export default function Carousel3D({ projects, onProjectClick = () => {} }: Caro
 
         {/* Floating Arrow */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 pointer-events-none">
-          <div className="flex flex-col items-center gap-2 animate-bounce">
-            <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
+          <div className="flex flex-col items-center gap-3 animate-bounce">
+            <div className="flex flex-col items-center">
+              <div className="w-8 h-12 border-2 border-cyan-400 rounded-full flex items-center justify-center">
+                <div className="w-1 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+              </div>
+              <svg className="w-8 h-8 text-cyan-400 -mt-2 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </div>
+            <p className="text-cyan-400 text-xs font-semibold tracking-widest uppercase mt-2">Scroll</p>
           </div>
         </div>
       </div>
