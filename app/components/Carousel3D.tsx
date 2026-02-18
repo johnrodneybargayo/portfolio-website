@@ -17,7 +17,7 @@ interface Carousel3DProps {
 
 function ProjectCard3D({ project, index, totalCards, onProjectClick, rotation }: ProjectCardProps & { rotation: number }) {
   const angle = (index / totalCards) * 360;
-  const radius = 350;
+  const radius = 300;
   
   // Calculate z-index based on card position relative to viewer
   // Normalize the angle relative to current rotation
@@ -38,14 +38,14 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick, rotation }:
     <div
       className="absolute cursor-pointer"
       style={{
-        width: '240px',
-        height: '280px',
+        width: '220px',
+        height: '260px',
         transform: `rotateY(${-angle}deg) translateZ(${radius}px)`,
         transformStyle: 'preserve-3d',
         left: '50%',
         top: '50%',
-        marginTop: '-140px',
-        marginLeft: '-120px',
+        marginTop: '-130px',
+        marginLeft: '-110px',
         backfaceVisibility: 'hidden',
         zIndex: zIndex,
         opacity: isBackFacing ? 0 : 1,
@@ -59,8 +59,8 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick, rotation }:
         style={{
           transformStyle: 'preserve-3d',
           position: 'relative',
-          width: '240px',
-          height: '280px',
+          width: '220px',
+          height: '260px',
         }}
       >
         {/* Front Face - Website Preview */}
@@ -73,7 +73,7 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick, rotation }:
           onClick={() => onProjectClick(project.id)}
         >
           {/* Website Preview Image */}
-          <div className="w-full h-40 overflow-hidden bg-gradient-to-br from-blue-600/10 to-cyan-600/10">
+          <div className="w-full h-32 overflow-hidden bg-gradient-to-br from-blue-600/10 to-cyan-600/10">
             <img
               src={project.image}
               alt={project.title}
@@ -149,9 +149,9 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick, rotation }:
           className="bg-blue-800"
           style={{
             position: 'absolute',
-            width: '40px',
-            height: '280px',
-            left: '-40px',
+            width: '30px',
+            height: '260px',
+            left: '-30px',
             top: 0,
             backfaceVisibility: 'hidden',
             transform: 'rotateY(-90deg)',
@@ -164,9 +164,9 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick, rotation }:
           className="bg-cyan-800"
           style={{
             position: 'absolute',
-            width: '40px',
-            height: '280px',
-            right: '-40px',
+            width: '30px',
+            height: '260px',
+            right: '-30px',
             top: 0,
             backfaceVisibility: 'hidden',
             transform: 'rotateY(90deg)',
@@ -231,12 +231,13 @@ export default function Carousel3D({ projects, onProjectClick = () => {} }: Caro
       {/* Carousel Container */}
       <div
         ref={containerRef}
-        className="relative w-full h-screen flex items-center justify-center cursor-grab active:cursor-grabbing"
+        className="relative w-full py-32 flex items-center justify-center cursor-grab active:cursor-grabbing"
         onMouseDown={handleMouseDown}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         style={{
           perspective: '1200px',
+          minHeight: '600px',
         }}
       >
         {/* Title */}
@@ -254,8 +255,8 @@ export default function Carousel3D({ projects, onProjectClick = () => {} }: Caro
         <div
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
           style={{
-            width: '1200px',
-            height: '400px',
+            width: '1000px',
+            height: '320px',
             perspective: '1200px',
             transformStyle: 'preserve-3d',
           }}
