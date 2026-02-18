@@ -163,6 +163,7 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick }: ProjectCa
 export default function Carousel3D({ projects, onProjectClick = () => {} }: Carousel3DProps) {
   const [rotation, setRotation] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const [startX, setStartX] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -200,12 +201,12 @@ export default function Carousel3D({ projects, onProjectClick = () => {} }: Caro
   // Auto-rotate
   useEffect(() => {
     const interval = setInterval(() => {
-      if (!isDragging) {
+      if (!isDragging && !isHovered) {
         setRotation((prev) => prev - 0.5);
       }
     }, 50);
     return () => clearInterval(interval);
-  }, [isDragging]);
+  }, [isDragging, isHovered]);
 
   return (
     <div className="w-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
@@ -213,6 +214,9 @@ export default function Carousel3D({ projects, onProjectClick = () => {} }: Caro
       <div
         ref={containerRef}
         className="relative w-full h-screen flex items-center justify-center cursor-grab active:cursor-grabbing"
+        onMouseDown={handleMouseDown}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
         style={{
           perspective: '1200px',
         }}
