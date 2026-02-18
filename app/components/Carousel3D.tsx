@@ -91,7 +91,7 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick, rotation }:
           <div className="px-4 py-5 flex flex-col flex-grow justify-between bg-gradient-to-b from-slate-900 to-slate-950">
             <div>
               <h3 className="text-base font-bold text-white truncate mb-2">{project.title}</h3>
-              <span className="inline-block bg-blue-500/30 text-blue-200 text-xs font-semibold px-2 py-1 rounded border border-blue-400/50">
+              <span className="inline-block bg-purple-500/30 text-purple-200 text-xs font-semibold px-2 py-1 rounded border border-purple-400/50">
                 {project.category}
               </span>
             </div>
@@ -101,7 +101,7 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick, rotation }:
                 e.stopPropagation();
                 onProjectClick(project.id);
               }}
-              className="mt-3 px-3 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white rounded text-xs font-bold transition-all hover:shadow-lg hover:shadow-blue-500/60 w-full"
+              className="mt-3 px-3 py-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white rounded text-xs font-bold transition-all hover:shadow-lg hover:shadow-purple-500/60 w-full"
             >
               Details →
             </button>
@@ -117,14 +117,14 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick, rotation }:
           }}
         >
           <div className="text-center px-4">
-            <p className="text-blue-300 text-sm font-bold">{project.title}</p>
+            <p className="text-purple-300 text-sm font-bold">{project.title}</p>
             <p className="text-slate-400 text-xs mt-2">{project.category}</p>
           </div>
         </div>
 
         {/* Top Face */}
         <div
-          className="absolute w-full bg-gradient-to-r from-blue-600 to-cyan-600"
+          className="absolute w-full bg-gradient-to-r from-purple-600 to-pink-600"
           style={{
             height: '40px',
             top: 0,
@@ -135,7 +135,7 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick, rotation }:
 
         {/* Bottom Face */}
         <div
-          className="absolute w-full bg-gradient-to-r from-blue-700 to-cyan-700"
+          className="absolute w-full bg-gradient-to-r from-purple-700 to-pink-700"
           style={{
             height: '40px',
             bottom: 0,
@@ -146,7 +146,7 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick, rotation }:
 
         {/* Left Face */}
         <div
-          className="bg-blue-800"
+          className="bg-purple-800"
           style={{
             position: 'absolute',
             width: '30px',
@@ -161,7 +161,7 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick, rotation }:
 
         {/* Right Face */}
         <div
-          className="bg-cyan-800"
+          className="bg-pink-800"
           style={{
             position: 'absolute',
             width: '30px',
@@ -247,7 +247,7 @@ export default function Carousel3D({ projects, onProjectClick = () => {} }: Caro
         </div>
 
         {/* Instructions */}
-        <div className="absolute bottom-32 md:bottom-36 left-1/2 -translate-x-1/2 text-center pointer-events-none">
+        <div className="absolute bottom-20 md:bottom-24 left-1/2 -translate-x-1/2 text-center pointer-events-none">
           <p className="text-slate-400 text-xs md:text-sm">Drag to rotate • Click cards to view details</p>
         </div>
 
@@ -281,21 +281,6 @@ export default function Carousel3D({ projects, onProjectClick = () => {} }: Caro
                 rotation={rotation}
               />
             ))}
-          </div>
-        </div>
-
-        {/* Floating Arrow */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 pointer-events-none">
-          <div className="flex flex-col items-center gap-3 animate-bounce">
-            <div className="flex flex-col items-center">
-              <div className="w-8 h-12 border-2 border-cyan-400 rounded-full flex items-center justify-center">
-                <div className="w-1 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
-              </div>
-              <svg className="w-8 h-8 text-cyan-400 -mt-2 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-              </svg>
-            </div>
-            <p className="text-cyan-400 text-xs font-semibold tracking-widest uppercase mt-2">Scroll</p>
           </div>
         </div>
       </div>
