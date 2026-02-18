@@ -20,49 +20,56 @@ function ProjectCard({ project, position, totalCards, isMobile, onProjectClick }
   const x = Math.cos(angle) * radius;
   const z = Math.sin(angle) * radius;
 
-  // Create canvas texture once, outside of render
-  const canvasTexture = useMemo(() => {
+  // Create front face texture with site preview
+  const frontTexture = useMemo(() => {
     const canvas = document.createElement('canvas');
     canvas.width = 512;
-    canvas.height = 384;
+    canvas.height = 512;
     const ctx = canvas.getContext('2d');
     
     if (ctx) {
-      // Background
-      ctx.fillStyle = '#0f172a';
+      // Background gradient
+      const gradient = ctx.createLinearGradient(0, 0, 512, 512);
+      gradient.addColorStop(0, '#1e293b');
+      gradient.addColorStop(1, '#0f172a');
+      ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
       // Border
       ctx.strokeStyle = '#3b82f6';
-      ctx.lineWidth = 3;
-      ctx.strokeRect(5, 5, canvas.width - 10, canvas.height - 10);
+      ctx.lineWidth = 4;
+      ctx.strokeRect(10, 10, canvas.width - 20, canvas.height - 20);
       
       // Title
       ctx.fillStyle = '#ffffff';
-      ctx.font = 'bold 24px Arial';
-      ctx.fillText(project.title, 20, 50);
+      ctx.font = 'bold 32px Arial';
+      ctx.textAlign = 'center';
+      ctx.fillText(project.title, 256, 80);
       
-      // Category
-      ctx.fillStyle = '#93c5fd';
-      ctx.font = '14px Arial';
-      ctx.fillText(project.category, 20, 75);
+      // Category badge
+      ctx.fillStyle = '#3b82f6';
+      ctx.fillRect(100, 110, 312, 40);
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 16px Arial';
+      ctx.fillText(project.category, 256, 135);
       
       // Description
       ctx.fillStyle = '#cbd5e1';
-      ctx.font = '14px Arial';
+      ctx.font = '18px Arial';
+      ctx.textAlign = 'center';
       const words = project.description.split(' ');
       let line = '';
-      let y = 110;
+      let y = 200;
       for (let word of words) {
-        if (ctx.measureText(line + word).width > 450) {
-          ctx.fillText(line, 20, y);
+        if (ctx.measureText(line + word).width > 400) {
+          ctx.fillText(line, 256, y);
           line = word + ' ';
-          y += 25;
+          y += 35;
         } else {
           line += word + ' ';
         }
       }
-      ctx.fillText(line, 20, y);
+      ctx.fillText(line, 256, y);
     }
     
     const texture = new THREE.CanvasTexture(canvas);
@@ -71,11 +78,35 @@ function ProjectCard({ project, position, totalCards, isMobile, onProjectClick }
     return texture;
   }, [project.title, project.category, project.description]);
 
+  // Create side faces texture
+  const sideTexture = useMemo(() => {
+    const canvas = document.createElement('canvas');
+    canvas.width = 256;
+    canvas.height = 512;
+    const ctx = canvas.getContext('2d');
+    
+    if (ctx) {
+      ctx.fillStyle = '#0f172a';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.strokeStyle = '#1e293b';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(0, 0, canvas.width, canvas.height);
+    }
+    
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.magFilter = THREE.LinearFilter;
+    texture.minFilter = THREE.LinearFilter;
+    return texture;
+  }, []);
+
   useFrame(() => {
     if (meshRef.current) {
       meshRef.current.rotation.y += 0.001;
     }
   });
+
+  const boxSize = isMobile ? 2 : 2.5;
+  const boxDepth = isMobile ? 1 : 1.2;
 
   return (
     <group
@@ -84,20 +115,23 @@ function ProjectCard({ project, position, totalCards, isMobile, onProjectClick }
       rotation={[0, -angle + Math.PI / 2, 0]}
     >
       <mesh>
-        <planeGeometry args={[isMobile ? 2.5 : 3, isMobile ? 2 : 2.5]} />
-        <meshStandardMaterial color="#1e293b" />
-      </mesh>
-      <mesh position={[0, 0, 0.01]}>
-        <planeGeometry args={[isMobile ? 2.4 : 2.9, isMobile ? 1.9 : 2.4]} />
-        <meshBasicMaterial map={canvasTexture} />
+        <boxGeometry args={[boxSize, boxSize, boxDepth]} />
+        <meshStandardMaterial
+          map={frontTexture}
+          side={THREE.FrontSide}
+          metalness={0.3}
+          roughness={0.6}
+        />
+        <meshStandardMaterial color="#0f172a" side={THREE.BackSide} />
       </mesh>
 
-      <Html transform distanceFactor={1.2} position={[0, 0, 0.02]} wrapperClass="flex items-center justify-center">
+      {/* Button overlay */}
+      <Html transform distanceFactor={1.2} position={[0, -boxSize / 2 - 0.3, 0]} wrapperClass="flex items-center justify-center">
         <button
           onClick={() => onProjectClick(project.id)}
-          className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg text-sm font-bold transition-colors"
+          className="px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white rounded-lg text-sm font-bold transition-all hover:shadow-lg hover:shadow-blue-500/50"
         >
-          View Project →
+          View Details →
         </button>
       </Html>
     </group>
