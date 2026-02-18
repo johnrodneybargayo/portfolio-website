@@ -92,7 +92,9 @@ export default function PortfolioPage() {
   ];
 
   const handleProjectClick = (projectId: number) => {
+    console.log('[v0] Scroll requested for project:', projectId);
     const projectCard = projectRefs.current[projectId];
+    console.log('[v0] Project card ref found:', !!projectCard);
     if (projectCard) {
       projectCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
       

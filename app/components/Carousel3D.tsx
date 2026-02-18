@@ -145,9 +145,13 @@ function ProjectCard({ project, position, totalCards, isMobile, onProjectClick }
       </mesh>
 
       {/* Button overlay */}
-      <Html transform distanceFactor={1.2} position={[0, -boxSize / 2 - 0.3, 0]} wrapperClass="flex items-center justify-center">
+      <Html transform distanceFactor={1.2} position={[0, -boxSize / 2 - 0.3, 0]} wrapperClass="flex items-center justify-center pointer-events-auto">
         <button
-          onClick={() => onProjectClick(project.id)}
+          onClick={(e) => {
+            e.stopPropagation();
+            console.log('[v0] Project clicked:', project.id, project.title);
+            onProjectClick(project.id);
+          }}
           className="px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white rounded-lg text-sm font-bold transition-all hover:shadow-lg hover:shadow-blue-500/50"
         >
           View Details →
@@ -233,14 +237,12 @@ export default function Carousel3D({ projects, onProjectClick = () => {} }: Caro
           </p>
         </div>
 
-        <div className="absolute top-1/2 right-6 md:right-8 -translate-y-1/2 pointer-events-auto">
-          <div className="flex flex-col gap-3 md:gap-4">
-            <button
-              onClick={() => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' })}
-              className="px-3 md:px-4 py-2 md:py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg text-xs md:text-sm font-bold transition-all hover:scale-105"
-            >
-              Back
-            </button>
+        {/* Floating Arrow Below */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full pointer-events-none">
+          <div className="flex flex-col items-center gap-2">
+            <svg className="w-6 h-6 text-blue-400 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
           </div>
         </div>
       </div>
