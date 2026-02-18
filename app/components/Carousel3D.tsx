@@ -16,7 +16,7 @@ interface Carousel3DProps {
 
 function ProjectCard3D({ project, index, totalCards, onProjectClick }: ProjectCardProps) {
   const angle = (index / totalCards) * 360;
-  const radius = 200;
+  const radius = 240;
   const x = Math.cos((angle * Math.PI) / 180) * radius;
   const z = Math.sin((angle * Math.PI) / 180) * radius;
 
@@ -24,18 +24,18 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick }: ProjectCa
     <div
       className="absolute cursor-pointer"
       style={{
-        width: '200px',
-        height: '240px',
+        width: '240px',
+        height: '280px',
         transform: `translateX(calc(-50% + ${x}px)) translateZ(${z}px) rotateY(${-angle}deg)`,
         transformStyle: 'preserve-3d',
         left: '50%',
         top: '50%',
-        marginTop: '-120px',
-        marginLeft: '-100px',
+        marginTop: '-140px',
+        marginLeft: '-120px',
         backfaceVisibility: 'hidden',
       }}
     >
-      {/* 3D Box with depth */}
+      {/* 3D Box Container */}
       <div
         className="w-full h-full relative"
         style={{
@@ -43,37 +43,35 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick }: ProjectCa
           position: 'relative',
         }}
       >
-        {/* Front Face */}
+        {/* Front Face - Website Preview */}
         <div
-          className="absolute w-full h-full bg-gradient-to-br from-slate-800 to-slate-900 border border-blue-500/60 hover:border-blue-300 rounded-lg overflow-hidden shadow-xl flex flex-col cursor-pointer group transition-all duration-300 hover:shadow-blue-500/50"
+          className="absolute w-full h-full bg-slate-950 border-2 border-blue-500/70 rounded-lg overflow-hidden shadow-2xl flex flex-col cursor-pointer group transition-all duration-300 hover:border-blue-300"
           style={{
             backfaceVisibility: 'hidden',
-            transform: 'translateZ(30px)',
+            transform: 'translateZ(40px)',
           }}
           onClick={() => onProjectClick(project.id)}
         >
-          {/* Image Section */}
-          <div className="w-full h-28 overflow-hidden bg-gradient-to-br from-blue-600/20 to-cyan-600/20 flex items-center justify-center">
+          {/* Website Preview Image */}
+          <div className="w-full h-40 overflow-hidden bg-gradient-to-br from-blue-600/10 to-cyan-600/10">
             <img
               src={project.image}
               alt={project.title}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               onError={(e) => {
                 e.currentTarget.src =
-                  'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22%3E%3Crect fill=%22%23374151%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2216%22 fill=%22%239CA3AF%22%3E' +
+                  'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22%3E%3Crect fill=%22%231e293b%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2218%22 fill=%229CA3AF%22%3E' +
                   project.title +
                   '%3C/text%3E%3C/svg%3E';
               }}
             />
           </div>
 
-          {/* Content Section */}
-          <div className="p-3 flex flex-col flex-grow justify-between">
+          {/* Info Section */}
+          <div className="p-4 flex flex-col flex-grow justify-between bg-gradient-to-b from-slate-900 to-slate-950">
             <div>
-              <h3 className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors truncate">
-                {project.title}
-              </h3>
-              <span className="inline-block bg-blue-500/20 text-blue-300 text-xs font-semibold px-2 py-0.5 rounded mt-1 border border-blue-500/30">
+              <h3 className="text-base font-bold text-white truncate mb-2">{project.title}</h3>
+              <span className="inline-block bg-blue-500/30 text-blue-200 text-xs font-semibold px-2 py-1 rounded border border-blue-400/50">
                 {project.category}
               </span>
             </div>
@@ -83,7 +81,7 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick }: ProjectCa
                 e.stopPropagation();
                 onProjectClick(project.id);
               }}
-              className="mt-2 px-3 py-1 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white rounded text-xs font-bold transition-all hover:shadow-lg hover:shadow-blue-500/50 w-full"
+              className="mt-3 px-3 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white rounded text-xs font-bold transition-all hover:shadow-lg hover:shadow-blue-500/60 w-full"
             >
               Details →
             </button>
@@ -92,14 +90,14 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick }: ProjectCa
 
         {/* Back Face */}
         <div
-          className="absolute w-full h-full bg-slate-900 border border-blue-400/40 rounded-lg flex items-center justify-center"
+          className="absolute w-full h-full bg-slate-900 border-2 border-blue-400/40 rounded-lg flex items-center justify-center"
           style={{
             backfaceVisibility: 'hidden',
-            transform: 'rotateY(180deg) translateZ(30px)',
+            transform: 'rotateY(180deg) translateZ(40px)',
           }}
         >
           <div className="text-center px-4">
-            <p className="text-blue-300 text-xs font-semibold">{project.title}</p>
+            <p className="text-blue-300 text-sm font-bold">{project.title}</p>
             <p className="text-slate-400 text-xs mt-2">{project.category}</p>
           </div>
         </div>
@@ -108,10 +106,10 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick }: ProjectCa
         <div
           className="absolute w-full bg-gradient-to-r from-blue-600 to-cyan-600"
           style={{
-            height: '30px',
+            height: '40px',
             top: 0,
             backfaceVisibility: 'hidden',
-            transform: 'rotateX(90deg) translateZ(30px)',
+            transform: 'rotateX(90deg) translateZ(40px)',
           }}
         />
 
@@ -119,38 +117,40 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick }: ProjectCa
         <div
           className="absolute w-full bg-gradient-to-r from-blue-700 to-cyan-700"
           style={{
-            height: '30px',
+            height: '40px',
             bottom: 0,
             backfaceVisibility: 'hidden',
-            transform: 'rotateX(-90deg) translateZ(30px)',
+            transform: 'rotateX(-90deg) translateZ(40px)',
           }}
         />
 
         {/* Left Face */}
         <div
-          className="absolute h-full bg-blue-800"
+          className="bg-blue-800"
           style={{
-            width: '60px',
-            height: '240px',
-            left: '-30px',
+            position: 'absolute',
+            width: '40px',
+            height: '280px',
+            left: '-40px',
             top: 0,
             backfaceVisibility: 'hidden',
-            transform: 'rotateY(-90deg) translateZ(0px)',
-            transformOrigin: 'left center',
+            transform: 'rotateY(-90deg)',
+            transformOrigin: 'right center',
           }}
         />
 
         {/* Right Face */}
         <div
-          className="absolute h-full bg-cyan-800"
+          className="bg-cyan-800"
           style={{
-            width: '60px',
-            height: '240px',
-            right: '-30px',
+            position: 'absolute',
+            width: '40px',
+            height: '280px',
+            right: '-40px',
             top: 0,
             backfaceVisibility: 'hidden',
-            transform: 'rotateY(90deg) translateZ(0px)',
-            transformOrigin: 'right center',
+            transform: 'rotateY(90deg)',
+            transformOrigin: 'left center',
           }}
         />
       </div>
@@ -230,8 +230,8 @@ export default function Carousel3D({ projects, onProjectClick = () => {} }: Caro
         <div
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
           style={{
-            width: '1000px',
-            height: '350px',
+            width: '1200px',
+            height: '400px',
             perspective: '1200px',
             transformStyle: 'preserve-3d',
           }}
@@ -246,16 +246,16 @@ export default function Carousel3D({ projects, onProjectClick = () => {} }: Caro
               position: 'relative',
             }}
           >
-              {projects.map((project, index) => (
-                <ProjectCard3D
-                  key={project.id}
-                  project={project}
-                  index={index}
-                  totalCards={projects.length}
-                  onProjectClick={onProjectClick}
-                />
-              ))}
-            </div>
+            {projects.map((project, index) => (
+              <ProjectCard3D
+                key={project.id}
+                project={project}
+                index={index}
+                totalCards={projects.length}
+                onProjectClick={onProjectClick}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Floating Arrow */}
