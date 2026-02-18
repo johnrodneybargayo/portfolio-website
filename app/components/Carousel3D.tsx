@@ -24,8 +24,15 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick, rotation }:
   let normalizedAngle = (angle - rotation) % 360;
   if (normalizedAngle < 0) normalizedAngle += 360;
   
-  // Cards in front (0-180 degrees) get higher z-index
-  let zIndex = Math.round((180 - Math.abs(normalizedAngle - 180)) / 2);
+  // Convert to -180 to 180 range for better calculation
+  if (normalizedAngle > 180) normalizedAngle -= 360;
+  
+  // Cards facing forward get higher z-index, cards facing backward get lower
+  // Maximum z-index is 1000 (front facing), minimum is 0 (back facing)
+  let zIndex = Math.max(0, Math.round(1000 * (1 - Math.abs(normalizedAngle) / 180)));
+  
+  // Hide cards that are completely on the back (between 135-225 degrees)
+  const isBackFacing = Math.abs(normalizedAngle) > 90;
 
   return (
     <div
@@ -41,6 +48,9 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick, rotation }:
         marginLeft: '-120px',
         backfaceVisibility: 'hidden',
         zIndex: zIndex,
+        opacity: isBackFacing ? 0 : 1,
+        pointerEvents: isBackFacing ? 'none' : 'auto',
+        transition: 'opacity 0.3s ease-out',
       }}
     >
       {/* 3D Box Container */}
