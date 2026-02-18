@@ -63,14 +63,6 @@ export default function PortfolioPage() {
       image: 'https://api.microlink.io?url=https://perudating.com/&screenshot=true&meta=false&embed=screenshot.url',
     },
     {
-      id: 9,
-      title: 'Cebu Insights',
-      link: 'https://cebuinsights.com/',
-      category: 'Content',
-      description: 'News and insights platform',
-      image: 'https://api.microlink.io?url=https://cebuinsights.com/&screenshot=true&meta=false&embed=screenshot.url',
-    },
-    {
       id: 10,
       title: 'Labour Hire and Recruitment',
       link: 'https://labourhireandrecruitment.com.au',
