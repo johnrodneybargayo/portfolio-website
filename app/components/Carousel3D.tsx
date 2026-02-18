@@ -41,11 +41,13 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick }: ProjectCa
         style={{
           transformStyle: 'preserve-3d',
           position: 'relative',
+          width: '240px',
+          height: '280px',
         }}
       >
         {/* Front Face - Website Preview */}
         <div
-          className="absolute w-full h-full bg-slate-950 border-2 border-blue-500/70 rounded-lg overflow-hidden shadow-2xl flex flex-col cursor-pointer group transition-all duration-300 hover:border-blue-300"
+          className="absolute w-full h-full bg-slate-950 overflow-hidden shadow-2xl flex flex-col cursor-pointer group transition-all duration-300"
           style={{
             backfaceVisibility: 'hidden',
             transform: 'translateZ(40px)',
@@ -90,7 +92,7 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick }: ProjectCa
 
         {/* Back Face */}
         <div
-          className="absolute w-full h-full bg-slate-900 border-2 border-blue-400/40 rounded-lg flex items-center justify-center"
+          className="absolute w-full h-full bg-slate-900 flex items-center justify-center"
           style={{
             backfaceVisibility: 'hidden',
             transform: 'rotateY(180deg) translateZ(40px)',
