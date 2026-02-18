@@ -17,7 +17,7 @@ interface Carousel3DProps {
 
 function ProjectCard3D({ project, index, totalCards, onProjectClick, rotation }: ProjectCardProps & { rotation: number }) {
   const angle = (index / totalCards) * 360;
-  const radius = 240;
+  const radius = 350;
   
   // Calculate z-index based on card position relative to viewer
   // Normalize the angle relative to current rotation
