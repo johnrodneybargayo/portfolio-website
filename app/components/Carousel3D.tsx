@@ -1,10 +1,9 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Html, OrbitControls, Environment } from '@react-three/drei';
 import * as THREE from 'three';
-import Image from 'next/image';
 
 interface ProjectCardProps {
   project: any;
@@ -19,6 +18,57 @@ function ProjectCard({ project, position, totalCards, isMobile }: ProjectCardPro
   const radius = isMobile ? 4 : 6;
   const x = Math.cos(angle) * radius;
   const z = Math.sin(angle) * radius;
+
+  // Create canvas texture once, outside of render
+  const canvasTexture = useMemo(() => {
+    const canvas = document.createElement('canvas');
+    canvas.width = 512;
+    canvas.height = 384;
+    const ctx = canvas.getContext('2d');
+    
+    if (ctx) {
+      // Background
+      ctx.fillStyle = '#0f172a';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      // Border
+      ctx.strokeStyle = '#3b82f6';
+      ctx.lineWidth = 3;
+      ctx.strokeRect(5, 5, canvas.width - 10, canvas.height - 10);
+      
+      // Title
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 24px Arial';
+      ctx.fillText(project.title, 20, 50);
+      
+      // Category
+      ctx.fillStyle = '#93c5fd';
+      ctx.font = '14px Arial';
+      ctx.fillText(project.category, 20, 75);
+      
+      // Description
+      ctx.fillStyle = '#cbd5e1';
+      ctx.font = '14px Arial';
+      const words = project.description.split(' ');
+      let line = '';
+      let y = 110;
+      for (let word of words) {
+        if (ctx.measureText(line + word).width > 450) {
+          ctx.fillText(line, 20, y);
+          line = word + ' ';
+          y += 25;
+        } else {
+          line += word + ' ';
+        }
+      }
+      ctx.fillText(line, 20, y);
+    }
+    
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.magFilter = THREE.LinearFilter;
+    texture.minFilter = THREE.LinearFilter;
+    return texture;
+  }, [project.title, project.category, project.description]);
 
   useFrame(() => {
     if (meshRef.current) {
@@ -38,57 +88,7 @@ function ProjectCard({ project, position, totalCards, isMobile }: ProjectCardPro
       </mesh>
       <mesh position={[0, 0, 0.01]}>
         <planeGeometry args={[isMobile ? 2.4 : 2.9, isMobile ? 1.9 : 2.4]} />
-        <meshBasicMaterial>
-          <canvasTexture
-            attach="map"
-            args={[
-              (() => {
-                const canvas = document.createElement('canvas');
-                canvas.width = 512;
-                canvas.height = 384;
-                const ctx = canvas.getContext('2d')!;
-                
-                // Background
-                ctx.fillStyle = '#0f172a';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                
-                // Border
-                ctx.strokeStyle = '#3b82f6';
-                ctx.lineWidth = 3;
-                ctx.strokeRect(5, 5, canvas.width - 10, canvas.height - 10);
-                
-                // Title
-                ctx.fillStyle = '#ffffff';
-                ctx.font = 'bold 24px Arial';
-                ctx.fillText(project.title, 20, 50);
-                
-                // Category
-                ctx.fillStyle = '#93c5fd';
-                ctx.font = '14px Arial';
-                ctx.fillText(project.category, 20, 75);
-                
-                // Description
-                ctx.fillStyle = '#cbd5e1';
-                ctx.font = '14px Arial';
-                const words = project.description.split(' ');
-                let line = '';
-                let y = 110;
-                for (let word of words) {
-                  if (ctx.measureText(line + word).width > 450) {
-                    ctx.fillText(line, 20, y);
-                    line = word + ' ';
-                    y += 25;
-                  } else {
-                    line += word + ' ';
-                  }
-                }
-                ctx.fillText(line, 20, y);
-                
-                return new THREE.CanvasTexture(canvas);
-              })(),
-            ]}
-          />
-        </meshBasicMaterial>
+        <meshBasicMaterial map={canvasTexture} />
       </mesh>
 
       <Html transform distanceFactor={1.2} position={[0, 0, 0.02]} wrapperClass="flex items-center justify-center">
