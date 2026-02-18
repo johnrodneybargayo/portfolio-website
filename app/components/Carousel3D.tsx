@@ -14,7 +14,7 @@ interface ProjectCardProps {
 }
 
 function ProjectCard({ project, position, totalCards, isMobile, onProjectClick }: ProjectCardProps) {
-  const meshRef = useRef<THREE.Group>(null);
+  const meshRef = useRef<THREE.Mesh>(null);
   const angle = (position / totalCards) * Math.PI * 2;
   const radius = isMobile ? 4 : 6;
   const x = Math.cos(angle) * radius;
@@ -75,18 +75,19 @@ function ProjectCard({ project, position, totalCards, isMobile, onProjectClick }
     const texture = new THREE.CanvasTexture(canvas);
     texture.magFilter = THREE.LinearFilter;
     texture.minFilter = THREE.LinearFilter;
+    texture.needsUpdate = true;
     return texture;
   }, [project.title, project.category, project.description]);
 
-  // Create side faces texture
-  const sideTexture = useMemo(() => {
+  // Create side face texture
+  const sideMaterial = useMemo(() => {
     const canvas = document.createElement('canvas');
     canvas.width = 256;
     canvas.height = 512;
     const ctx = canvas.getContext('2d');
     
     if (ctx) {
-      ctx.fillStyle = '#0f172a';
+      ctx.fillStyle = '#0a0e27';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       ctx.strokeStyle = '#1e293b';
       ctx.lineWidth = 2;
@@ -96,8 +97,27 @@ function ProjectCard({ project, position, totalCards, isMobile, onProjectClick }
     const texture = new THREE.CanvasTexture(canvas);
     texture.magFilter = THREE.LinearFilter;
     texture.minFilter = THREE.LinearFilter;
+    texture.needsUpdate = true;
     return texture;
   }, []);
+
+  const frontMaterial = useMemo(() => new THREE.MeshStandardMaterial({
+    map: frontTexture,
+    metalness: 0.2,
+    roughness: 0.7,
+  }), [frontTexture]);
+
+  const backMaterial = useMemo(() => new THREE.MeshStandardMaterial({
+    color: '#0f172a',
+    metalness: 0.2,
+    roughness: 0.7,
+  }), []);
+
+  const sideMat = useMemo(() => new THREE.MeshStandardMaterial({
+    map: sideMaterial,
+    metalness: 0.2,
+    roughness: 0.7,
+  }), [sideMaterial]);
 
   useFrame(() => {
     if (meshRef.current) {
@@ -110,19 +130,18 @@ function ProjectCard({ project, position, totalCards, isMobile, onProjectClick }
 
   return (
     <group
-      ref={meshRef}
       position={[x, 0, z]}
-      rotation={[0, -angle + Math.PI / 2, 0]}
+      rotation={[0, -angle, 0]}
     >
-      <mesh>
+      <mesh ref={meshRef} castShadow receiveShadow>
         <boxGeometry args={[boxSize, boxSize, boxDepth]} />
-        <meshStandardMaterial
-          map={frontTexture}
-          side={THREE.FrontSide}
-          metalness={0.3}
-          roughness={0.6}
-        />
-        <meshStandardMaterial color="#0f172a" side={THREE.BackSide} />
+        {/* Array of materials: right, left, top, bottom, front, back */}
+        <meshStandardMaterial attach="material-0" color="#0a0e27" metalness={0.2} roughness={0.7} />
+        <meshStandardMaterial attach="material-1" color="#0a0e27" metalness={0.2} roughness={0.7} />
+        <meshStandardMaterial attach="material-2" color="#0a0e27" metalness={0.2} roughness={0.7} />
+        <meshStandardMaterial attach="material-3" color="#0a0e27" metalness={0.2} roughness={0.7} />
+        <meshStandardMaterial attach="material-4" map={frontTexture} metalness={0.2} roughness={0.7} />
+        <meshStandardMaterial attach="material-5" color="#0f172a" metalness={0.2} roughness={0.7} />
       </mesh>
 
       {/* Button overlay */}
