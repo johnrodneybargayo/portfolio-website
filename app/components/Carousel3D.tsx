@@ -231,13 +231,13 @@ export default function Carousel3D({ projects, onProjectClick = () => {} }: Caro
       {/* Carousel Container */}
       <div
         ref={containerRef}
-        className="relative w-full py-48 flex items-center justify-center cursor-grab active:cursor-grabbing"
+        className="relative w-full py-64 flex items-center justify-center cursor-grab active:cursor-grabbing"
         onMouseDown={handleMouseDown}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         style={{
           perspective: '1200px',
-          minHeight: '700px',
+          minHeight: '800px',
         }}
       >
         {/* Title */}
