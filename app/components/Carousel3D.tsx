@@ -19,9 +19,6 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick }: ProjectCa
   const radius = 180;
   const x = Math.cos((angle * Math.PI) / 180) * radius;
   const z = Math.sin((angle * Math.PI) / 180) * radius;
-  
-  // Calculate opacity based on z position
-  const opacity = Math.max(0, Math.min(1, (z + 180) / 180));
 
   return (
     <div
@@ -36,8 +33,6 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick }: ProjectCa
         marginTop: '-120px',
         marginLeft: '-100px',
         backfaceVisibility: 'hidden',
-        opacity: opacity,
-        pointerEvents: opacity > 0.3 ? 'auto' : 'none',
       }}
     >
       {/* 3D Box with depth */}
@@ -111,8 +106,9 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick }: ProjectCa
 
         {/* Top Face */}
         <div
-          className="absolute w-full h-16 bg-gradient-to-r from-blue-600 to-cyan-600 opacity-60"
+          className="absolute w-full bg-gradient-to-r from-blue-600 to-cyan-600"
           style={{
+            height: '30px',
             top: 0,
             backfaceVisibility: 'hidden',
             transform: 'rotateX(90deg) translateZ(30px)',
@@ -121,8 +117,9 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick }: ProjectCa
 
         {/* Bottom Face */}
         <div
-          className="absolute w-full h-16 bg-gradient-to-r from-blue-700 to-cyan-700 opacity-40"
+          className="absolute w-full bg-gradient-to-r from-blue-700 to-cyan-700"
           style={{
+            height: '30px',
             bottom: 0,
             backfaceVisibility: 'hidden',
             transform: 'rotateX(-90deg) translateZ(30px)',
@@ -131,8 +128,9 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick }: ProjectCa
 
         {/* Left Face */}
         <div
-          className="absolute h-full w-16 bg-blue-900 opacity-50"
+          className="absolute h-full bg-blue-800"
           style={{
+            width: '30px',
             left: 0,
             backfaceVisibility: 'hidden',
             transform: 'rotateY(-90deg) translateZ(30px)',
@@ -141,8 +139,9 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick }: ProjectCa
 
         {/* Right Face */}
         <div
-          className="absolute h-full w-16 bg-cyan-900 opacity-50"
+          className="absolute h-full bg-cyan-800"
           style={{
+            width: '30px',
             right: 0,
             backfaceVisibility: 'hidden',
             transform: 'rotateY(90deg) translateZ(30px)',
@@ -228,7 +227,6 @@ export default function Carousel3D({ projects, onProjectClick = () => {} }: Caro
             width: '100%',
             height: '350px',
             perspective: '1200px',
-            overflow: 'hidden',
           }}
         >
           <div
