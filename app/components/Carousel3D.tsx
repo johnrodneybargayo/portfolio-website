@@ -16,53 +16,56 @@ interface Carousel3DProps {
 
 function ProjectCard3D({ project, index, totalCards, onProjectClick }: ProjectCardProps) {
   const angle = (index / totalCards) * 360;
-  const radius = 350;
+  const radius = 180;
   const x = Math.cos((angle * Math.PI) / 180) * radius;
   const z = Math.sin((angle * Math.PI) / 180) * radius;
   
-  // Calculate opacity based on z position - fade out as boxes go left/back
-  const opacity = Math.max(0, Math.min(1, (z + 300) / 300));
+  // Calculate opacity based on z position
+  const opacity = Math.max(0, Math.min(1, (z + 180) / 180));
 
   return (
     <div
-      className="absolute w-72 h-96 cursor-pointer transition-all duration-300 hover:scale-105"
+      className="absolute cursor-pointer"
       style={{
+        width: '200px',
+        height: '240px',
         transform: `translateX(calc(-50% + ${x}px)) translateZ(${z}px) rotateY(${-angle}deg)`,
         transformStyle: 'preserve-3d',
         left: '50%',
         top: '50%',
-        marginTop: '-192px',
-        marginLeft: '-144px',
+        marginTop: '-120px',
+        marginLeft: '-100px',
         backfaceVisibility: 'hidden',
         opacity: opacity,
         pointerEvents: opacity > 0.3 ? 'auto' : 'none',
       }}
     >
-      {/* 3D Box */}
+      {/* 3D Box with depth */}
       <div
         className="w-full h-full relative"
         style={{
           transformStyle: 'preserve-3d',
-          transform: 'rotateX(0deg) rotateY(0deg)',
+          position: 'relative',
         }}
       >
         {/* Front Face */}
         <div
-          className="absolute w-full h-full bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-blue-500/60 hover:border-blue-300 rounded-xl overflow-hidden shadow-2xl transition-all duration-300 hover:shadow-blue-500/50 flex flex-col cursor-pointer group"
+          className="absolute w-full h-full bg-gradient-to-br from-slate-800 to-slate-900 border border-blue-500/60 hover:border-blue-300 rounded-lg overflow-hidden shadow-xl flex flex-col cursor-pointer group transition-all duration-300 hover:shadow-blue-500/50"
           style={{
             backfaceVisibility: 'hidden',
+            transform: 'translateZ(30px)',
           }}
           onClick={() => onProjectClick(project.id)}
         >
           {/* Image Section */}
-          <div className="w-full h-48 overflow-hidden bg-gradient-to-br from-blue-600/20 to-cyan-600/20 flex items-center justify-center">
+          <div className="w-full h-28 overflow-hidden bg-gradient-to-br from-blue-600/20 to-cyan-600/20 flex items-center justify-center">
             <img
               src={project.image}
               alt={project.title}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               onError={(e) => {
                 e.currentTarget.src =
-                  'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22%3E%3Crect fill=%22%23374151%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2220%22 fill=%22%239CA3AF%22%3E' +
+                  'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22%3E%3Crect fill=%22%23374151%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2216%22 fill=%22%239CA3AF%22%3E' +
                   project.title +
                   '%3C/text%3E%3C/svg%3E';
               }}
@@ -70,17 +73,14 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick }: ProjectCa
           </div>
 
           {/* Content Section */}
-          <div className="p-5 flex flex-col flex-grow justify-between">
+          <div className="p-3 flex flex-col flex-grow justify-between">
             <div>
-              <div className="mb-3">
-                <span className="inline-block bg-blue-500/20 text-blue-300 text-xs font-semibold px-3 py-1 rounded-full border border-blue-500/30">
-                  {project.category}
-                </span>
-              </div>
-              <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors truncate">
+              <h3 className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors truncate">
                 {project.title}
               </h3>
-              <p className="text-slate-300 text-sm mt-2 line-clamp-2">{project.description}</p>
+              <span className="inline-block bg-blue-500/20 text-blue-300 text-xs font-semibold px-2 py-0.5 rounded mt-1 border border-blue-500/30">
+                {project.category}
+              </span>
             </div>
             
             <button
@@ -88,12 +88,66 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick }: ProjectCa
                 e.stopPropagation();
                 onProjectClick(project.id);
               }}
-              className="mt-4 px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white rounded-lg text-sm font-bold transition-all hover:shadow-lg hover:shadow-blue-500/50 w-full"
+              className="mt-2 px-3 py-1 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white rounded text-xs font-bold transition-all hover:shadow-lg hover:shadow-blue-500/50 w-full"
             >
-              View Details →
+              Details →
             </button>
           </div>
         </div>
+
+        {/* Back Face */}
+        <div
+          className="absolute w-full h-full bg-slate-900 border border-blue-400/40 rounded-lg flex items-center justify-center"
+          style={{
+            backfaceVisibility: 'hidden',
+            transform: 'rotateY(180deg) translateZ(30px)',
+          }}
+        >
+          <div className="text-center px-4">
+            <p className="text-blue-300 text-xs font-semibold">{project.title}</p>
+            <p className="text-slate-400 text-xs mt-2">{project.category}</p>
+          </div>
+        </div>
+
+        {/* Top Face */}
+        <div
+          className="absolute w-full h-16 bg-gradient-to-r from-blue-600 to-cyan-600 opacity-60"
+          style={{
+            top: 0,
+            backfaceVisibility: 'hidden',
+            transform: 'rotateX(90deg) translateZ(30px)',
+          }}
+        />
+
+        {/* Bottom Face */}
+        <div
+          className="absolute w-full h-16 bg-gradient-to-r from-blue-700 to-cyan-700 opacity-40"
+          style={{
+            bottom: 0,
+            backfaceVisibility: 'hidden',
+            transform: 'rotateX(-90deg) translateZ(30px)',
+          }}
+        />
+
+        {/* Left Face */}
+        <div
+          className="absolute h-full w-16 bg-blue-900 opacity-50"
+          style={{
+            left: 0,
+            backfaceVisibility: 'hidden',
+            transform: 'rotateY(-90deg) translateZ(30px)',
+          }}
+        />
+
+        {/* Right Face */}
+        <div
+          className="absolute h-full w-16 bg-cyan-900 opacity-50"
+          style={{
+            right: 0,
+            backfaceVisibility: 'hidden',
+            transform: 'rotateY(90deg) translateZ(30px)',
+          }}
+        />
       </div>
     </div>
   );
@@ -167,21 +221,21 @@ export default function Carousel3D({ projects, onProjectClick = () => {} }: Caro
           <p className="text-slate-400 text-xs md:text-sm">Drag to rotate • Click cards to view details</p>
         </div>
 
-        {/* 3D Carousel - Left Aligned Viewport */}
+        {/* 3D Carousel - Compact Left Aligned */}
         <div
           className="absolute left-0 top-1/2 -translate-y-1/2"
           style={{
             width: '100%',
-            height: '600px',
+            height: '350px',
             perspective: '1200px',
             overflow: 'hidden',
           }}
         >
           <div
-            className="absolute left-1/4 top-1/2 -translate-y-1/2"
+            className="absolute left-1/3 top-1/2 -translate-y-1/2"
             style={{
-              width: '1000px',
-              height: '600px',
+              width: '600px',
+              height: '350px',
               perspective: '1000px',
               transformStyle: 'preserve-3d',
             }}
