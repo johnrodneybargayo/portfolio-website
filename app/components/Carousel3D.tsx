@@ -248,7 +248,7 @@ export default function Carousel3D({ projects, onProjectClick = () => {} }: Caro
 
         {/* Instructions */}
         <div className="absolute bottom-20 md:bottom-24 left-1/2 -translate-x-1/2 text-center pointer-events-none">
-          <p className="text-slate-400 text-xs md:text-sm">Drag to rotate • Click cards to view details</p>
+          <p className="text-purple-300 text-sm md:text-base font-semibold tracking-wide">Drag to rotate • Click cards to view details</p>
         </div>
 
         {/* 3D Carousel - Centered Layout */}
