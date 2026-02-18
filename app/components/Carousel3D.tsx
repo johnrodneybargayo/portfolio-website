@@ -10,9 +10,10 @@ interface ProjectCardProps {
   position: number;
   totalCards: number;
   isMobile: boolean;
+  onProjectClick: (projectId: number) => void;
 }
 
-function ProjectCard({ project, position, totalCards, isMobile }: ProjectCardProps) {
+function ProjectCard({ project, position, totalCards, isMobile, onProjectClick }: ProjectCardProps) {
   const meshRef = useRef<THREE.Group>(null);
   const angle = (position / totalCards) * Math.PI * 2;
   const radius = isMobile ? 4 : 6;
@@ -93,7 +94,7 @@ function ProjectCard({ project, position, totalCards, isMobile }: ProjectCardPro
 
       <Html transform distanceFactor={1.2} position={[0, 0, 0.02]} wrapperClass="flex items-center justify-center">
         <button
-          onClick={() => window.open(project.link, '_blank')}
+          onClick={() => onProjectClick(project.id)}
           className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg text-sm font-bold transition-colors"
         >
           View Project →
@@ -103,7 +104,7 @@ function ProjectCard({ project, position, totalCards, isMobile }: ProjectCardPro
   );
 }
 
-function CarouselScene({ projects, isMobile }: { projects: any[]; isMobile: boolean }) {
+function CarouselScene({ projects, isMobile, onProjectClick }: { projects: any[]; isMobile: boolean; onProjectClick: (projectId: number) => void }) {
   const sceneRef = useRef<THREE.Group>(null);
 
   useFrame(() => {
@@ -123,6 +124,7 @@ function CarouselScene({ projects, isMobile }: { projects: any[]; isMobile: bool
             position={index}
             totalCards={projects.length}
             isMobile={isMobile}
+            onProjectClick={onProjectClick}
           />
         ))}
       </group>
@@ -138,9 +140,10 @@ function CarouselScene({ projects, isMobile }: { projects: any[]; isMobile: bool
 
 interface Carousel3DProps {
   projects: any[];
+  onProjectClick?: (projectId: number) => void;
 }
 
-export default function Carousel3D({ projects }: Carousel3DProps) {
+export default function Carousel3D({ projects, onProjectClick = () => {} }: Carousel3DProps) {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -161,7 +164,7 @@ export default function Carousel3D({ projects }: Carousel3DProps) {
       >
         <ambientLight intensity={0.6} />
         <pointLight position={[10, 10, 10]} intensity={1} />
-        <CarouselScene projects={projects} isMobile={isMobile} />
+        <CarouselScene projects={projects} isMobile={isMobile} onProjectClick={onProjectClick} />
       </Canvas>
 
       {/* UI Overlay */}
