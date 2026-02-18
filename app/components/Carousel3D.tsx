@@ -26,7 +26,7 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick }: ProjectCa
       style={{
         width: '240px',
         height: '280px',
-        transform: `translateX(calc(-50% + ${x}px)) translateZ(${z}px) rotateY(${-angle}deg)`,
+        transform: `rotateY(${-angle}deg) translateZ(${radius}px)`,
         transformStyle: 'preserve-3d',
         left: '50%',
         top: '50%',
