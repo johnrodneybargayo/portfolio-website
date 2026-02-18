@@ -130,10 +130,13 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick }: ProjectCa
         <div
           className="absolute h-full bg-blue-800"
           style={{
-            width: '30px',
-            left: 0,
+            width: '60px',
+            height: '240px',
+            left: '-30px',
+            top: 0,
             backfaceVisibility: 'hidden',
-            transform: 'rotateY(-90deg) translateZ(30px)',
+            transform: 'rotateY(-90deg) translateZ(0px)',
+            transformOrigin: 'left center',
           }}
         />
 
@@ -141,10 +144,13 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick }: ProjectCa
         <div
           className="absolute h-full bg-cyan-800"
           style={{
-            width: '30px',
-            right: 0,
+            width: '60px',
+            height: '240px',
+            right: '-30px',
+            top: 0,
             backfaceVisibility: 'hidden',
-            transform: 'rotateY(90deg) translateZ(30px)',
+            transform: 'rotateY(90deg) translateZ(0px)',
+            transformOrigin: 'right center',
           }}
         />
       </div>
