@@ -88,7 +88,7 @@ function ProjectCard3D({ project, index, totalCards, onProjectClick, rotation }:
           </div>
 
           {/* Info Section */}
-          <div className="p-4 flex flex-col flex-grow justify-between bg-gradient-to-b from-slate-900 to-slate-950">
+          <div className="px-4 py-5 flex flex-col flex-grow justify-between bg-gradient-to-b from-slate-900 to-slate-950">
             <div>
               <h3 className="text-base font-bold text-white truncate mb-2">{project.title}</h3>
               <span className="inline-block bg-blue-500/30 text-blue-200 text-xs font-semibold px-2 py-1 rounded border border-blue-400/50">
