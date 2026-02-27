@@ -1,49 +1,49 @@
-import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
-import Sidebar from '@/app/components/Sidebar'
-import './globals.css'
+import "./globals.css"
+import { Inter } from "next/font/google"
+import Navigation from "./components/Navigation"
+import Footer from "./components/Footer"
+import SplashCursor from "./components/SplashCursor"
+import { useEffect } from "react"
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"] })
 
-export const metadata: Metadata = {
-  title: 'Rod - Freelance Web Developer',
-  description: 'Portfolio of John Rodney Bargayo, a freelance web developer specializing in WordPress, Wix, Shopify, Framer, Beaver Builder, and Divi.',
-  generator: 'v0.app',
-  icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
-  },
+export const metadata = {
+  title: "Rod - Freelance Fullstack Web Developer",
+  description: "Personal portfolio of John Rodney Bargayo, a creative fullstack developer",
+    generator: 'v0.app'
 }
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement
+      if (target.tagName === "A" && target.getAttribute("href")?.startsWith("#")) {
+        e.preventDefault()
+        const id = target.getAttribute("href")?.slice(1)
+        const element = document.getElementById(id!)
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" })
+        }
+      }
+    }
+
+    document.addEventListener("click", handleClick)
+    return () => document.removeEventListener("click", handleClick)
+  }, [])
+
   return (
     <html lang="en">
-      <body className={`${_geist.className} antialiased bg-slate-900 m-0 p-0`}>
-        <Sidebar />
-        <main className="transition-all duration-300">
-          {children}
-        </main>
-        <Analytics />
+      <body className={inter.className}>
+        <Navigation />
+        <SplashCursor />
+        <div className="pt-16 md:pt-20">{children}</div>
+        <Footer />
       </body>
     </html>
   )
 }
+
