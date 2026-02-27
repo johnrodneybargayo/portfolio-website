@@ -19,7 +19,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 12px;
 }
@@ -37,7 +36,6 @@ body {
   background: rgba(168, 85, 247, 0.8);
 }
 
-/* Animations */
 @keyframes float {
   0%, 100% {
     transform: translateY(0px);
@@ -97,7 +95,6 @@ body {
   animation: pulse 3s infinite;
 }
 
-/* Gradient backgrounds */
 .bg-gradient-primary {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
@@ -106,7 +103,6 @@ body {
   background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
 }
 
-/* Text utilities */
 .text-gradient {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   -webkit-background-clip: text;
@@ -114,13 +110,11 @@ body {
   background-clip: text;
 }
 
-/* Backdrop blur */
 .backdrop-blur-custom {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
 
-/* 3D transforms */
 .perspective-1000 {
   perspective: 1000px;
 }
@@ -129,12 +123,10 @@ body {
   transform-style: preserve-3d;
 }
 
-/* Smooth transitions */
 .transition-smooth {
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* Glassmorphism */
 .glassmorphism {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
@@ -142,7 +134,6 @@ body {
   border-radius: 12px;
 }
 
-/* Utility classes */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -155,7 +146,6 @@ body {
   border-width: 0;
 }
 
-/* Responsive utilities */
 @media (max-width: 768px) {
   .md-hidden {
     display: none;
