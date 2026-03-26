@@ -89,6 +89,14 @@ export default function PortfolioPage() {
       description: 'Construction company website',
       image: 'https://api.microlink.io?url=https://v7gipcjbs9bvqsav.vercel.app/&screenshot=true&meta=false&embed=screenshot.url',
     },
+    {
+      id: 14,
+      title: 'Nambu English',
+      link: 'https://nambu-english.online',
+      category: 'Education',
+      description: 'English language learning platform',
+      image: 'https://api.microlink.io?url=https://nambu-english.online&screenshot=true&meta=false&embed=screenshot.url',
+    },
   ];
 
   const handleProjectClick = (projectId: number) => {
