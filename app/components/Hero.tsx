@@ -3,7 +3,9 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import Link from 'next/link';
-import Image from 'next/image';
+import dynamic from 'next/dynamic';
+
+const HeroScene3D = dynamic(() => import('./HeroScene3D'), { ssr: false });
 
 export default function Hero() {
   const heroRef = useRef(null);
@@ -129,17 +131,11 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Image */}
+        {/* 3D Scene */}
         <div ref={imageRef} className="flex justify-center md:justify-end mt-8 md:mt-0">
           <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-2xl overflow-hidden border-4 border-blue-500/50 shadow-2xl shadow-blue-500/25">
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-20 z-10"></div>
-            <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/411068017_7561810227171334_4227971823188484885_n.jpg-OODEwjqHv6IuuC51YbGSbSRnBoyshS.jpeg"
-              alt="John Rodney Bargayo"
-              width={300}
-              height={300}
-              className="w-full h-full object-cover"
-            />
+            <HeroScene3D />
           </div>
         </div>
       </div>
