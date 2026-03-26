@@ -93,9 +93,25 @@ export default function PortfolioPage() {
       id: 14,
       title: 'Nambu English',
       link: 'https://nambu-english.online',
-      category: 'Education',
+      category: 'Live Site',
       description: 'English language learning platform',
       image: 'https://api.microlink.io?url=https://nambu-english.online&screenshot=true&meta=false&embed=screenshot.url',
+    },
+    {
+      id: 15,
+      title: 'Workplace Weirdness',
+      link: 'https://workplace-weirdness.com',
+      category: 'Live Site',
+      description: 'Workplace culture and comedy platform',
+      image: 'https://api.microlink.io?url=https://workplace-weirdness.com&screenshot=true&meta=false&embed=screenshot.url',
+    },
+    {
+      id: 16,
+      title: 'WordPress Wasmer Demo',
+      link: 'https://wordpress-h295p.wasmer.app/',
+      category: 'Demo Site',
+      description: 'WordPress website running on Wasmer',
+      image: 'https://api.microlink.io?url=https://wordpress-h295p.wasmer.app/&screenshot=true&meta=false&embed=screenshot.url',
     },
   ];
 
@@ -181,8 +197,11 @@ export default function PortfolioPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-          {projects.map((project) => (
+        {/* Live Sites Section */}
+        <div className="mb-16">
+          <h3 className="text-2xl sm:text-3xl font-bold text-white mb-6 text-blue-400">Live Sites</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            {projects.filter(p => p.category === 'Live Site').map((project) => (
             <div
               key={project.id}
               ref={(el) => {
@@ -230,7 +249,64 @@ export default function PortfolioPage() {
                 </div>
               </a>
             </div>
-          ))}
+            ))}
+          </div>
+        </div>
+
+        {/* Demo & Current Projects Section */}
+        <div>
+          <h3 className="text-2xl sm:text-3xl font-bold text-white mb-6 text-cyan-400">Demo & Current Projects</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            {projects.filter(p => p.category === 'Demo Site' || p.category === 'Current Project').map((project) => (
+              <div
+                key={project.id}
+                ref={(el) => {
+                  if (el) projectRefs.current[project.id] = el;
+                }}
+                className="group transition-all duration-300"
+              >
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div className="bg-gradient-to-br from-slate-800 to-slate-700 rounded-xl overflow-hidden border border-slate-700 hover:border-blue-500 transition-all duration-300 h-full flex flex-col hover:shadow-2xl hover:shadow-blue-500/20 hover:scale-105">
+                    <div className="w-full h-40 bg-gradient-to-br from-blue-600/20 to-cyan-600/20 flex items-center justify-center overflow-hidden">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        onError={(e) => {
+                          e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22%3E%3Crect fill=%22%23374151%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2220%22 fill=%22%239CA3AF%22%3E' + project.title + '%3C/text%3E%3C/svg%3E';
+                        }}
+                      />
+                    </div>
+
+                    <div className="p-5 md:p-6 flex flex-col flex-grow">
+                      <div className="mb-3">
+                        <span className="inline-block bg-blue-500/20 text-blue-300 text-xs font-semibold px-3 py-1 rounded-full border border-blue-500/30">
+                          {project.category}
+                        </span>
+                      </div>
+                      <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
+                        {project.title}
+                      </h3>
+                      <p className="text-slate-300 text-sm flex-grow">
+                        {project.description}
+                      </p>
+                    </div>
+
+                    <div className="px-5 md:px-6 pb-5 md:pb-6">
+                      <div className="flex items-center gap-2 text-blue-400 group-hover:gap-4 transition-all">
+                        <span className="text-sm md:text-base">Visit Project</span>
+                        <ExternalLink size={16} />
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
