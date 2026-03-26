@@ -77,7 +77,7 @@ export default function PortfolioPage() {
       id: 12,
       title: 'KeystrokeQuest',
       link: 'https://htas2wdun2k.vercel.app/',
-      category: 'Current Project',
+      category: 'Demo Website',
       description: 'Code typing test platform',
       image: 'https://api.microlink.io?url=https://htas2wdun2k.vercel.app/&screenshot=true&meta=false&embed=screenshot.url',
     },
@@ -85,7 +85,7 @@ export default function PortfolioPage() {
       id: 13,
       title: 'Demo Construction Website',
       link: 'https://v7gipcjbs9bvqsav.vercel.app/',
-      category: 'Current Project',
+      category: 'Demo Website',
       description: 'Construction company website',
       image: 'https://api.microlink.io?url=https://v7gipcjbs9bvqsav.vercel.app/&screenshot=true&meta=false&embed=screenshot.url',
     },
@@ -197,11 +197,11 @@ export default function PortfolioPage() {
           </p>
         </div>
 
-        {/* Live Sites Section */}
+        {/* Projects I Work On Section */}
         <div className="mb-16">
-          <h3 className="text-2xl sm:text-3xl font-bold text-white mb-6 text-blue-400">Live Sites</h3>
+          <h3 className="text-2xl sm:text-3xl font-bold text-white mb-6 text-blue-400">Projects I Work On</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-            {projects.filter(p => p.category === 'Live Site').map((project) => (
+            {projects.filter(p => p.category === 'Portfolio' || p.category === 'Web App' || p.category === 'Education' || p.category === 'Business Solution' || p.category === 'Community' || p.category === 'Social').map((project) => (
             <div
               key={project.id}
               ref={(el) => {
@@ -253,11 +253,67 @@ export default function PortfolioPage() {
           </div>
         </div>
 
-        {/* Demo & Current Projects Section */}
-        <div>
-          <h3 className="text-2xl sm:text-3xl font-bold text-white mb-6 text-cyan-400">Demo & Current Projects</h3>
+        {/* Live Sites Section */}
+        <div className="mb-16">
+          <h3 className="text-2xl sm:text-3xl font-bold text-white mb-6 text-green-400">Live Sites</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-            {projects.filter(p => p.category === 'Demo Site' || p.category === 'Current Project').map((project) => (
+            {projects.filter(p => p.category === 'Live Site').map((project) => (
+              <div
+                key={project.id}
+                ref={(el) => {
+                  if (el) projectRefs.current[project.id] = el;
+                }}
+                className="group transition-all duration-300"
+              >
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div className="bg-gradient-to-br from-slate-800 to-slate-700 rounded-xl overflow-hidden border border-slate-700 hover:border-green-500 transition-all duration-300 h-full flex flex-col hover:shadow-2xl hover:shadow-green-500/20 hover:scale-105">
+                    <div className="w-full h-40 bg-gradient-to-br from-green-600/20 to-emerald-600/20 flex items-center justify-center overflow-hidden">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        onError={(e) => {
+                          e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22%3E%3Crect fill=%22%23374151%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2220%22 fill=%22%239CA3AF%22%3E' + project.title + '%3C/text%3E%3C/svg%3E';
+                        }}
+                      />
+                    </div>
+
+                    <div className="p-5 md:p-6 flex flex-col flex-grow">
+                      <div className="mb-3">
+                        <span className="inline-block bg-green-500/20 text-green-300 text-xs font-semibold px-3 py-1 rounded-full border border-green-500/30">
+                          {project.category}
+                        </span>
+                      </div>
+                      <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-green-400 transition-colors">
+                        {project.title}
+                      </h3>
+                      <p className="text-slate-300 text-sm flex-grow">
+                        {project.description}
+                      </p>
+                    </div>
+
+                    <div className="px-5 md:px-6 pb-5 md:pb-6">
+                      <div className="flex items-center gap-2 text-green-400 group-hover:gap-4 transition-all">
+                        <span className="text-sm md:text-base">Visit Project</span>
+                        <ExternalLink size={16} />
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Demo Websites Section */}
+        <div>
+          <h3 className="text-2xl sm:text-3xl font-bold text-white mb-6 text-cyan-400">Demo Websites</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            {projects.filter(p => p.category === 'Demo Website' || p.category === 'Demo Site').map((project) => (
               <div
                 key={project.id}
                 ref={(el) => {
