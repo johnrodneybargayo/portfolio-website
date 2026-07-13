@@ -10,6 +10,7 @@ export default function AboutPage() {
     { name: 'WordPress', icon: 'devicon-wordpress-plain' },
     { name: 'Shopify', icon: 'devicon-shopify-plain' },
     { name: 'Wix', icon: 'devicon-wix-plain' },
+    { name: 'Squarespace', icon: 'devicon-square-plain' },
     { name: 'Framer', icon: 'devicon-framer-plain' },
     { name: 'Beaver Builder', icon: 'devicon-wordpress-plain' },
     { name: 'Divi', icon: 'devicon-wordpress-plain' },
@@ -33,13 +34,13 @@ export default function AboutPage() {
           <p className="text-lg md:text-xl text-slate-400">Web developer specializing in WordPress, Wix, Shopify, Framer, Beaver Builder, and Divi</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-12 md:mb-16 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 mb-16 md:mb-20 items-center">
           <div>
             <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 md:mb-6">John Rodney Bargayo</h2>
-            <p className="text-base md:text-lg text-slate-300 mb-4 md:mb-6 leading-relaxed">
+            <p className="text-base md:text-lg text-slate-300 mb-6 md:mb-8 leading-relaxed">
               I'm a passionate freelance web developer with extensive experience building beautiful, functional websites and e-commerce platforms. I specialize in WordPress, Wix, Shopify, Framer, Beaver Builder, and Divi to create solutions tailored to your business goals.
             </p>
-            <p className="text-base md:text-lg text-slate-300 mb-4 md:mb-6 leading-relaxed">
+            <p className="text-base md:text-lg text-slate-300 mb-6 md:mb-8 leading-relaxed">
               I focus on creating elegant, responsive designs that not only look great but also convert visitors into customers. My approach emphasizes user experience, performance optimization, and SEO best practices to ensure your web presence stands out.
             </p>
             <p className="text-base md:text-lg text-slate-300 leading-relaxed">
@@ -60,10 +61,10 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="border-t border-slate-700 pt-12 md:pt-16">
+        <div className="border-t border-slate-700 pt-16 md:pt-24">
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-8 md:mb-12">Skills & Technologies</h2>
           
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 md:gap-8">
             {skills.map((skill) => (
               <div
                 key={skill.name}
@@ -77,25 +78,25 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="mt-12 md:mt-16 border-t border-slate-700 pt-12 md:pt-16">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-8 md:mb-8">What I Do</h2>
+        <div className="mt-16 md:mt-24 border-t border-slate-700 pt-16 md:pt-24">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-8 md:mb-12">What I Do</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            <div className="bg-slate-800 rounded-lg p-8 border border-slate-700 hover:border-blue-500 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+            <div className="bg-slate-800 rounded-lg p-8 md:p-12 border border-slate-700 hover:border-blue-500 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20">
               <h3 className="text-xl font-bold text-white mb-4">WordPress Development</h3>
               <p className="text-slate-400">
                 Custom WordPress websites with Beaver Builder, Divi, and other page builders. I create fully functional, SEO-optimized sites that are easy to manage.
               </p>
             </div>
 
-            <div className="bg-slate-800 rounded-lg p-8 border border-slate-700 hover:border-blue-500 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20">
+            <div className="bg-slate-800 rounded-lg p-8 md:p-12 border border-slate-700 hover:border-blue-500 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20">
               <h3 className="text-xl font-bold text-white mb-4">E-Commerce Solutions</h3>
               <p className="text-slate-400">
                 Building stunning online stores on Shopify and WooCommerce. I focus on conversion optimization and seamless user experiences.
               </p>
             </div>
 
-            <div className="bg-slate-800 rounded-lg p-8 border border-slate-700 hover:border-blue-500 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20">
+            <div className="bg-slate-800 rounded-lg p-8 md:p-12 border border-slate-700 hover:border-blue-500 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20">
               <h3 className="text-xl font-bold text-white mb-4">Web Design & Optimization</h3>
               <p className="text-slate-400">
                 Creating responsive, modern designs with Framer and other tools. Every project includes performance optimization and mobile-first design.
