@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import Footer from '@/app/components/Footer';
-import { ExternalLink } from 'lucide-react';
 
 export default function PortfolioPage() {
   const projects = [
@@ -18,11 +17,10 @@ export default function PortfolioPage() {
       id: 2,
       title: 'Podify',
       link: 'https://podify.com',
-      category: 'Web App',
+      category: 'Business Solution',
       description: 'Podcast management platform',
       image: 'https://api.microlink.io?url=https://podify.com&screenshot=true&meta=false&embed=screenshot.url',
     },
-
     {
       id: 4,
       title: 'Aura Creo',
@@ -67,7 +65,7 @@ export default function PortfolioPage() {
       id: 12,
       title: 'KeystrokeQuest',
       link: 'https://htas2wdun2k.vercel.app/',
-      category: 'Current Project',
+      category: 'Projects',
       description: 'Code typing test platform',
       image: 'https://api.microlink.io?url=https://htas2wdun2k.vercel.app/&screenshot=true&meta=false&embed=screenshot.url',
     },
@@ -75,10 +73,58 @@ export default function PortfolioPage() {
       id: 13,
       title: 'Demo Construction Website',
       link: 'https://v7gipcjbs9bvqsav.vercel.app/',
-      category: 'Current Project',
+      category: 'Projects',
       description: 'Construction company website',
       image: 'https://api.microlink.io?url=https://v7gipcjbs9bvqsav.vercel.app/&screenshot=true&meta=false&embed=screenshot.url',
     },
+    {
+      id: 14,
+      title: 'ESL Website',
+      link: 'https://www.nambu-english.online//',
+      category: 'Business Solution',
+      description: 'ESL Website',
+      image: 'https://api.microlink.io?url=https://www.nambu-english.online/&screenshot=true&meta=false&embed=screenshot.url',
+    },
+    {
+      id: 15,
+      title: 'Dr. Laura Berman',
+      link: 'https://drlauraberman.com',
+      category: 'Community',
+      description: 'Community platform',
+      image: 'https://api.microlink.io?url=https://drlauraberman.com&screenshot=true&meta=false&embed=screenshot.url',
+    },
+    {
+      id: 16,
+      title: 'Go Online Now',
+      link: 'https://goonlinenow.co/',
+      category: 'Business Solution',
+      description: 'Business platform',
+      image: 'https://api.microlink.io?url=https://goonlinenow.co/&screenshot=true&meta=false&embed=screenshot.url',
+    },
+  ];
+
+  // Order in which category sections should appear.
+  // Any category not listed here is appended alphabetically at the end.
+  const categoryOrder = [
+    'Projects',
+    'Business Solution',
+    'Portfolio',
+    'Community',
+    'Social',
+  ];
+
+  // Group projects by category
+  const grouped = projects.reduce((acc, project) => {
+    (acc[project.category] = acc[project.category] || []).push(project);
+    return acc;
+  }, {});
+
+  // Build the final ordered list of categories to render
+  const orderedCategories = [
+    ...categoryOrder.filter((cat) => grouped[cat]),
+    ...Object.keys(grouped)
+      .filter((cat) => !categoryOrder.includes(cat))
+      .sort(),
   ];
 
   return (
@@ -87,7 +133,7 @@ export default function PortfolioPage() {
       <section className="relative overflow-hidden pt-24 pb-20 md:pt-32 md:pb-28">
         {/* Subtle gradient background */}
         <div className="absolute inset-0 bg-gradient-to-b from-slate-800 to-slate-900 pointer-events-none" />
-        
+
         {/* Minimal accent line */}
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent" />
 
@@ -122,47 +168,61 @@ export default function PortfolioPage() {
       </section>
 
       {/* Projects Section */}
-      <section className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        {/* All Projects Grid */}
-        <div>
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-8">All Projects</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((project) => (
-              <a
-                key={project.id}
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative overflow-hidden rounded-lg transition-all duration-300"
-              >
-                <div className="relative bg-slate-800 overflow-hidden h-48 md:h-56">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    onError={(e) => {
-                      e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22%3E%3Crect fill=%22%23374151%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22system-ui%22 font-size=%2216%22 fill=%22%239CA3AF%22%3E' + project.title + '%3C/text%3E%3C/svg%3E';
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
+      <section className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-24 md:pb-32">
+        <div className="space-y-20 md:space-y-24">
+          {orderedCategories.map((category) => (
+            <div key={category}>
+              {/* Category heading */}
+              <div className="flex items-center gap-4 mb-10">
+                <h2 className="text-2xl md:text-3xl font-bold text-white">
+                  {category}
+                </h2>
+                <span className="text-sm font-semibold text-blue-300 bg-blue-500/10 border border-blue-500/20 rounded-full px-3 py-1">
+                  {grouped[category].length}
+                </span>
+                <div className="flex-1 h-px bg-gradient-to-r from-slate-700 to-transparent" />
+              </div>
 
-                {/* Card Info */}
-                <div className="p-4 md:p-5 bg-slate-800/50 border border-slate-700">
-                  <span className="inline-block text-xs font-semibold text-blue-300 mb-2 uppercase tracking-wider">
-                    {project.category}
-                  </span>
-                  <h3 className="text-lg md:text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-slate-400 text-sm">
-                    {project.description}
-                  </p>
-                </div>
-              </a>
-            ))}
-          </div>
+              {/* Projects grid for this category */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                {grouped[category].map((project) => (
+                  <a
+                    key={project.id}
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative overflow-hidden rounded-lg transition-all duration-300"
+                  >
+                    <div className="relative bg-slate-800 overflow-hidden h-48 md:h-56">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        onError={(e) => {
+                          e.currentTarget.src =
+                            'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22%3E%3Crect fill=%22%23374151%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22system-ui%22 font-size=%2216%22 fill=%22%239CA3AF%22%3E' +
+                            project.title +
+                            '%3C/text%3E%3C/svg%3E';
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
+
+                    {/* Card Info */}
+                    <div className="p-4 md:p-5 bg-slate-800/50 border border-slate-700">
+                      <span className="inline-block text-xs font-semibold text-blue-300 mb-2 uppercase tracking-wider">
+                        {project.category}
+                      </span>
+                      <h3 className="text-lg md:text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
+                        {project.title}
+                      </h3>
+                      <p className="text-slate-400 text-sm">{project.description}</p>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
