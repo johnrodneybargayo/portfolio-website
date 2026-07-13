@@ -224,11 +224,16 @@ export default function Hero() {
       </div>
 
       {/* Scroll cue */}
-      <div className="pointer-events-none absolute bottom-8 left-1/2 -translate-x-1/2">
-        <div className="flex h-9 w-6 items-start justify-center rounded-full ring-1 ring-white/20 p-1.5">
-          <div className="h-2 w-1 animate-bounce rounded-full bg-blue-300/80" />
-        </div>
-      </div>
+      <button
+        type="button"
+        aria-label="Scroll down"
+        onClick={() =>
+          window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })
+        }
+        className="group absolute bottom-8 left-1/2 -translate-x-1/2 flex h-9 w-6 items-start justify-center rounded-full ring-1 ring-white/20 p-1.5 transition-colors duration-300 hover:ring-blue-400/60 cursor-pointer"
+      >
+        <div className="h-2 w-1 animate-bounce rounded-full bg-blue-300/80 transition-colors group-hover:bg-blue-300" />
+      </button>
     </section>
   );
 }
