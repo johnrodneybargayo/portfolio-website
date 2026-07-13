@@ -8,9 +8,9 @@ import Image from 'next/image';
 export default function AboutPage() {
   const skills = [
     { name: 'WordPress', icon: 'devicon-wordpress-plain' },
-    { name: 'Shopify', icon: 'devicon-shopify-plain' },
-    { name: 'Wix', icon: 'devicon-wix-plain' },
-    { name: 'Squarespace', icon: 'devicon-square-plain' },
+    { name: 'Shopify', logo: 'https://cdn.simpleicons.org/shopify/7AB55C' },
+    { name: 'Wix', logo: 'https://cdn.simpleicons.org/wix/0C6EFC' },
+    { name: 'Squarespace', logo: 'https://cdn.simpleicons.org/squarespace/FFFFFF' },
     { name: 'Framer', icon: 'devicon-framer-plain' },
     { name: 'Beaver Builder', icon: 'devicon-wordpress-plain' },
     { name: 'Divi', icon: 'devicon-wordpress-plain' },
@@ -193,9 +193,17 @@ export default function AboutPage() {
                 key={skill.name}
                 className="group flex flex-col items-center justify-center p-4 md:p-5 rounded-xl bg-slate-900/60 ring-1 ring-white/10 transition-all duration-300 hover:-translate-y-1 hover:ring-blue-400/40 hover:shadow-xl hover:shadow-blue-500/10"
               >
-                <i
-                  className={`${skill.icon} colored text-3xl md:text-4xl mb-2 transition-transform duration-300 group-hover:scale-110`}
-                ></i>
+                {skill.logo ? (
+                  <img
+                    src={skill.logo}
+                    alt={`${skill.name} logo`}
+                    className="h-8 w-8 md:h-9 md:w-9 mb-2 object-contain transition-transform duration-300 group-hover:scale-110"
+                  />
+                ) : (
+                  <i
+                    className={`${skill.icon} colored text-3xl md:text-4xl mb-2 transition-transform duration-300 group-hover:scale-110`}
+                  ></i>
+                )}
                 <p className="text-slate-300 text-center text-xs font-medium leading-tight">
                   {skill.name}
                 </p>
