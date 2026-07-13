@@ -10,6 +10,7 @@ export default function AboutPage() {
     { name: 'WordPress', icon: 'devicon-wordpress-plain' },
     { name: 'Shopify', icon: 'devicon-shopify-plain' },
     { name: 'Wix', icon: 'devicon-wix-plain' },
+    { name: 'Squarespace', icon: 'devicon-square-plain' },
     { name: 'Framer', icon: 'devicon-framer-plain' },
     { name: 'Beaver Builder', icon: 'devicon-wordpress-plain' },
     { name: 'Divi', icon: 'devicon-wordpress-plain' },
