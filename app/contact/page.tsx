@@ -3,129 +3,229 @@
 import Footer from '@/app/components/Footer';
 import Stars from '@/app/components/Stars';
 import Shapes3D from '@/app/components/Shapes3D';
-import { Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
+import {
+  Mail,
+  Phone,
+  MapPin,
+  MessageCircle,
+  ArrowUpRight,
+  Clock,
+} from 'lucide-react';
 
 const phoneNumber = '+6399967788865';
 const whatsappLink = `https://wa.me/${phoneNumber.replace(/\D/g, '')}`;
 const viberLink = `viber://chat?number=${phoneNumber.replace(/\D/g, '')}`;
 
 export default function ContactPage() {
+  const details = [
+    {
+      Icon: Mail,
+      label: 'Email',
+      value: 'johnrodney.bargayo@gmail.com',
+      href: 'mailto:johnrodney.bargayo@gmail.com',
+      breakAll: true,
+    },
+    {
+      Icon: Phone,
+      label: 'Phone',
+      value: phoneNumber,
+      href: `tel:${phoneNumber}`,
+    },
+    {
+      Icon: MapPin,
+      label: 'Location',
+      value: 'Philippines',
+    },
+  ];
+
+  const channels = [
+    {
+      Icon: MessageCircle,
+      title: 'WhatsApp',
+      subtitle: 'Send me a message',
+      href: whatsappLink,
+      external: true,
+      accent: 'text-emerald-400',
+      tile: 'bg-emerald-500/15 group-hover:bg-emerald-500/25',
+      ring: 'ring-emerald-500/30 hover:ring-emerald-400/60',
+      glow: 'from-emerald-500/10',
+    },
+    {
+      Icon: MessageCircle,
+      title: 'Viber',
+      subtitle: 'Call or message',
+      href: viberLink,
+      external: false,
+      accent: 'text-purple-400',
+      tile: 'bg-purple-500/15 group-hover:bg-purple-500/25',
+      ring: 'ring-purple-500/30 hover:ring-purple-400/60',
+      glow: 'from-purple-500/10',
+    },
+    {
+      Icon: Mail,
+      title: 'Email',
+      subtitle: 'Send directly',
+      href: 'mailto:johnrodney.bargayo@gmail.com',
+      external: false,
+      accent: 'text-blue-400',
+      tile: 'bg-blue-500/15 group-hover:bg-blue-500/25',
+      ring: 'ring-blue-500/30 hover:ring-blue-400/60',
+      glow: 'from-blue-500/10',
+    },
+  ];
+
   return (
-    <main className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 min-h-screen py-20 relative overflow-hidden">
+    <main className="relative min-h-screen overflow-hidden bg-slate-950 antialiased">
+      {/* Ambient background */}
       <Stars />
       <Shapes3D />
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="mb-16 md:mb-20">
-          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-3 md:mb-4">Get In Touch</h1>
-          <p className="text-lg md:text-xl text-slate-400">
-            Let's connect and discuss your next project
+      <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-[40rem] w-[40rem] rounded-full bg-blue-500/10 blur-3xl" />
+      <div className="pointer-events-none absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/50 to-transparent" />
+
+      <section className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 pt-24 pb-20 md:pt-28 md:pb-24">
+        {/* Heading */}
+        <div className="mb-14 md:mb-16 max-w-3xl">
+          <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.25em] text-blue-300/90 mb-5">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px] shadow-emerald-400/60" />
+            Get in touch
+          </span>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] text-white">
+            Let&apos;s build{' '}
+            <span className="bg-gradient-to-r from-blue-300 to-sky-400 bg-clip-text text-transparent">
+              something great
+            </span>
+          </h1>
+          <p className="mt-5 text-lg md:text-xl text-slate-400 leading-relaxed">
+            Available for freelance projects, consultations, and collaborations.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-start">
           {/* Contact Information */}
-          <div className="space-y-6 md:space-y-8">
-            <div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 md:mb-8">Contact Information</h2>
-              
-              <div className="space-y-6 md:space-y-8">
-                {/* Email */}
-                <div className="flex items-start gap-3 md:gap-4 p-6 md:p-8 bg-slate-800/50 rounded-lg border border-slate-700 hover:border-blue-500/50 transition-colors duration-200">
-                  <Mail className="text-blue-400 mt-1 flex-shrink-0" size={20} />
-                  <div className="min-w-0">
-                    <h3 className="text-white font-bold mb-1 md:mb-2 text-sm md:text-base">Email</h3>
-                    <a href="mailto:johnrodney.bargayo@gmail.com" className="text-slate-400 hover:text-blue-400 transition-colors duration-200 text-xs md:text-sm break-all">
-                      johnrodney.bargayo@gmail.com
-                    </a>
-                  </div>
-                </div>
-
-                {/* Phone */}
-                <div className="flex items-start gap-3 md:gap-4 p-6 md:p-8 bg-slate-800/50 rounded-lg border border-slate-700 hover:border-blue-500/50 transition-colors duration-200">
-                  <Phone className="text-blue-400 mt-1 flex-shrink-0" size={20} />
-                  <div>
-                    <h3 className="text-white font-bold mb-1 md:mb-2 text-sm md:text-base">Phone</h3>
-                    <a href={`tel:${phoneNumber}`} className="text-slate-400 hover:text-blue-400 transition-colors duration-200 text-xs md:text-sm">
-                      {phoneNumber}
-                    </a>
-                  </div>
-                </div>
-
-                {/* Location */}
-                <div className="flex items-start gap-3 md:gap-4 p-6 md:p-8 bg-slate-800/50 rounded-lg border border-slate-700 hover:border-blue-500/50 transition-colors duration-200">
-                  <MapPin className="text-blue-400 mt-1 flex-shrink-0" size={20} />
-                  <div>
-                    <h3 className="text-white font-bold mb-1 md:mb-2 text-sm md:text-base">Location</h3>
-                    <p className="text-slate-400 text-xs md:text-sm">
-                      Philippines
-                    </p>
-                  </div>
-                </div>
+          <div>
+            <div className="mb-8">
+              <div className="flex items-baseline gap-4">
+                <span className="text-sm font-mono text-slate-600">01</span>
+                <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
+                  Contact Information
+                </h2>
               </div>
+              <div className="mt-5 h-px w-full bg-gradient-to-r from-slate-700 via-slate-800 to-transparent" />
+            </div>
+
+            <div className="space-y-4">
+              {details.map(({ Icon, label, value, href, breakAll }) => {
+                const inner = (
+                  <>
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-500/10 ring-1 ring-blue-400/20 text-blue-300 transition-colors group-hover:bg-blue-500/20">
+                      <Icon size={18} />
+                    </span>
+                    <div className="min-w-0">
+                      <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">
+                        {label}
+                      </h3>
+                      <p
+                        className={`text-sm md:text-base text-slate-200 ${
+                          breakAll ? 'break-all' : ''
+                        }`}
+                      >
+                        {value}
+                      </p>
+                    </div>
+                  </>
+                );
+
+                const cardClass =
+                  'group flex items-center gap-4 p-5 md:p-6 rounded-2xl bg-slate-900/60 ring-1 ring-white/10 transition-all duration-300 hover:-translate-y-0.5 hover:ring-blue-400/40 hover:shadow-xl hover:shadow-blue-500/10';
+
+                return href ? (
+                  <a key={label} href={href} className={cardClass}>
+                    {inner}
+                  </a>
+                ) : (
+                  <div key={label} className={cardClass}>
+                    {inner}
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Response time */}
+            <div className="mt-4 flex items-center gap-3 p-5 md:p-6 rounded-2xl bg-gradient-to-b from-slate-900/80 to-slate-900/40 ring-1 ring-white/10">
+              <Clock size={18} className="shrink-0 text-emerald-400" />
+              <p className="text-sm text-slate-300">
+                I typically respond within{' '}
+                <span className="font-semibold text-white">24 hours</span>.
+              </p>
             </div>
           </div>
 
-          {/* Contact Methods */}
-          <div className="space-y-6 md:space-y-8">
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 md:mb-8">Quick Contact</h2>
-            
-            {/* WhatsApp Button */}
-            <a
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-between gap-3 md:gap-4 p-6 md:p-8 bg-gradient-to-r from-green-500/20 to-green-600/20 hover:from-green-500/30 hover:to-green-600/30 rounded-lg border border-green-500/50 hover:border-green-400 transition-all duration-200 group"
-            >
-              <div className="flex items-center gap-3 md:gap-4 min-w-0">
-                <div className="p-2 md:p-3 bg-green-500/20 group-hover:bg-green-500/30 rounded-lg flex-shrink-0">
-                  <MessageCircle className="text-green-400" size={20} />
-                </div>
-                <div className="min-w-0">
-                  <h3 className="text-white font-bold text-sm md:text-lg">WhatsApp</h3>
-                  <p className="text-slate-400 text-xs md:text-sm">Send me a message</p>
-                </div>
+          {/* Quick Contact */}
+          <div>
+            <div className="mb-8">
+              <div className="flex items-baseline gap-4">
+                <span className="text-sm font-mono text-slate-600">02</span>
+                <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
+                  Quick Contact
+                </h2>
               </div>
-              <span className="text-green-400 group-hover:translate-x-1 transition-transform duration-200 flex-shrink-0">→</span>
-            </a>
+              <div className="mt-5 h-px w-full bg-gradient-to-r from-slate-700 via-slate-800 to-transparent" />
+            </div>
 
-            {/* Viber Button */}
-            <a
-              href={viberLink}
-              className="flex items-center justify-between gap-3 md:gap-4 p-6 md:p-8 bg-gradient-to-r from-purple-500/20 to-purple-600/20 hover:from-purple-500/30 hover:to-purple-600/30 rounded-lg border border-purple-500/50 hover:border-purple-400 transition-all duration-200 group"
-            >
-              <div className="flex items-center gap-3 md:gap-4 min-w-0">
-                <div className="p-2 md:p-3 bg-purple-500/20 group-hover:bg-purple-500/30 rounded-lg flex-shrink-0">
-                  <MessageCircle className="text-purple-400" size={20} />
-                </div>
-                <div className="min-w-0">
-                  <h3 className="text-white font-bold text-sm md:text-lg">Viber</h3>
-                  <p className="text-slate-400 text-xs md:text-sm">Call or message</p>
-                </div>
-              </div>
-              <span className="text-purple-400 group-hover:translate-x-1 transition-transform duration-200 flex-shrink-0">→</span>
-            </a>
-
-            {/* Email Option */}
-            <a
-              href="mailto:johnrodney.bargayo@gmail.com"
-              className="flex items-center justify-between gap-3 md:gap-4 p-6 md:p-8 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 hover:from-blue-500/30 hover:to-cyan-500/30 rounded-lg border border-blue-500/50 hover:border-blue-400 transition-all duration-200 group"
-            >
-              <div className="flex items-center gap-3 md:gap-4 min-w-0">
-                <div className="p-2 md:p-3 bg-blue-500/20 group-hover:bg-blue-500/30 rounded-lg flex-shrink-0">
-                  <Mail className="text-blue-400" size={20} />
-                </div>
-                <div className="min-w-0">
-                  <h3 className="text-white font-bold text-sm md:text-lg">Email</h3>
-                  <p className="text-slate-400 text-xs md:text-sm">Send directly</p>
-                </div>
-              </div>
-              <span className="text-blue-400 group-hover:translate-x-1 transition-transform duration-200 flex-shrink-0">→</span>
-            </a>
+            <div className="space-y-4">
+              {channels.map(
+                ({
+                  Icon,
+                  title,
+                  subtitle,
+                  href,
+                  external,
+                  accent,
+                  tile,
+                  ring,
+                  glow,
+                }) => (
+                  <a
+                    key={title}
+                    href={href}
+                    {...(external
+                      ? { target: '_blank', rel: 'noopener noreferrer' }
+                      : {})}
+                    className={`group relative flex items-center justify-between gap-4 overflow-hidden p-5 md:p-6 rounded-2xl bg-slate-900/60 ring-1 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-black/20 ${ring}`}
+                  >
+                    <div
+                      className={`pointer-events-none absolute inset-0 bg-gradient-to-r ${glow} to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100`}
+                    />
+                    <div className="relative flex items-center gap-4 min-w-0">
+                      <span
+                        className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl transition-colors ${tile}`}
+                      >
+                        <Icon className={accent} size={20} />
+                      </span>
+                      <div className="min-w-0">
+                        <h3 className="text-base md:text-lg font-bold text-white">
+                          {title}
+                        </h3>
+                        <p className="text-xs md:text-sm text-slate-400">
+                          {subtitle}
+                        </p>
+                      </div>
+                    </div>
+                    <ArrowUpRight
+                      className={`relative shrink-0 ${accent} transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5`}
+                      size={20}
+                    />
+                  </a>
+                )
+              )}
+            </div>
 
             {/* Info Box */}
-            <div className="p-6 md:p-8 bg-slate-800/50 rounded-lg border border-slate-700 mt-8 md:mt-12">
-              <p className="text-slate-300 text-xs md:text-sm leading-relaxed">
-                I'm available for freelance projects, consultations, and collaborations. Feel free to reach out through any method above. I typically respond within 24 hours.
+            <div className="mt-4 p-6 md:p-7 rounded-2xl bg-slate-900/60 ring-1 ring-white/10">
+              <p className="text-sm text-slate-300 leading-relaxed">
+                Feel free to reach out through any method above — whether it&apos;s a
+                full project, a quick question, or just to say hello. I&apos;d love to
+                hear what you&apos;re working on.
               </p>
             </div>
           </div>
