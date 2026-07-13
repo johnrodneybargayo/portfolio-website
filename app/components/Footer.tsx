@@ -5,9 +5,9 @@ import { Facebook, Linkedin, Instagram, Mail, Phone } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-t from-slate-950 to-slate-900 text-white py-12 md:py-16 border-t border-slate-800/50">
+    <footer className="bg-gradient-to-t from-slate-950 to-slate-900 text-white py-16 md:py-20 border-t border-slate-800/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 mb-8 md:mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 md:gap-16 mb-12 md:mb-16">
           <div>
             <h3 className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 mb-3 md:mb-4">Rod</h3>
             <p className="text-slate-400 text-sm md:text-base">Freelance Web Developer crafting elegant digital solutions</p>
@@ -39,8 +39,8 @@ export default function Footer() {
           </div>
         </div>
         
-        <div className="border-t border-slate-800/50 pt-6 md:pt-8">
-          <div className="flex justify-center gap-4 md:gap-6 mb-6 md:mb-8">
+        <div className="border-t border-slate-800/50 pt-8 md:pt-12">
+          <div className="flex justify-center gap-4 md:gap-6 mb-8 md:mb-12">
             <a href="https://www.linkedin.com/in/rodbargayo/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-blue-400 transition-colors duration-200 hover:scale-110 transform">
               <Linkedin size={20} />
             </a>

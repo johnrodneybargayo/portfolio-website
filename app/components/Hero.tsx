@@ -99,10 +99,10 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center relative z-10 py-12 md:py-20">
-        <div ref={textRef} className="space-y-4 md:space-y-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center relative z-10 py-20 md:py-32">
+        <div ref={textRef} className="space-y-6 md:space-y-8">
           <div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-2 md:mb-4 leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 md:mb-6 leading-tight">
               Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">John Rodney</span>
             </h1>
           </div>
@@ -112,7 +112,7 @@ export default function Hero() {
           <p className="text-base md:text-lg text-slate-400 leading-relaxed">
             Specializing in WordPress, Wix, Shopify, Framer, Beaver Builder, and Divi. I create stunning, responsive websites and e-commerce solutions tailored to your business needs with a focus on user experience and conversion optimization.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 pt-4">
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 pt-8 md:pt-12">
             <Link
               href="/portfolio"
               className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-bold py-2 md:py-3 px-6 md:px-8 rounded-lg transition duration-300 shadow-lg hover:shadow-blue-500/50 text-sm md:text-base"
