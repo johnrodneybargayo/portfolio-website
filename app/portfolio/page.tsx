@@ -115,8 +115,8 @@ export default function PortfolioPage() {
   ];
 
   // Group projects by category
-  const grouped = projects.reduce((acc, project) => {
-    (acc[project.category] = acc[project.category] || []).push(project);
+  const grouped = projects.reduce<Record<string, typeof projects>>((acc, project) => {
+    (acc[project.category] ??= []).push(project);
     return acc;
   }, {});
 

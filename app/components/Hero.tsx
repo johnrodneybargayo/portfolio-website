@@ -7,9 +7,9 @@ import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 
 export default function Hero() {
-  const heroRef = useRef(null);
-  const textRef = useRef(null);
-  const imageRef = useRef(null);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
 
   const stats = [
     { value: '20+', label: 'Projects shipped' },
