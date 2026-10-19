@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${_geist.className} antialiased bg-slate-900 m-0 p-0`}>
         <Sidebar />
-        <main className="transition-all duration-300">
+        <main className="site-main">
           {children}
         </main>
         <Analytics />
