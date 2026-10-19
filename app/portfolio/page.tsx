@@ -129,7 +129,7 @@ export default function PortfolioPage() {
   ];
 
   return (
-    <main className="bg-slate-950 min-h-screen antialiased">
+    <main className="legacy-page portfolio-page min-h-screen antialiased">
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-28 pb-24 md:pt-36 md:pb-32">
         {/* Layered ambient background */}

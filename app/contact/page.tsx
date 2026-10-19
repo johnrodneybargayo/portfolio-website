@@ -1,8 +1,6 @@
 'use client';
 
 import Footer from '@/app/components/Footer';
-import Stars from '@/app/components/Stars';
-import Shapes3D from '@/app/components/Shapes3D';
 import {
   Mail,
   Phone,
@@ -75,13 +73,7 @@ export default function ContactPage() {
   ];
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-slate-950 antialiased">
-      {/* Ambient background */}
-      <Stars />
-      <Shapes3D />
-      <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-[40rem] w-[40rem] rounded-full bg-blue-500/10 blur-3xl" />
-      <div className="pointer-events-none absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/50 to-transparent" />
-
+    <main className="legacy-page contact-page relative min-h-screen antialiased">
       <section className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 pt-24 pb-20 md:pt-28 md:pb-24">
         {/* Heading */}
         <div className="mb-14 md:mb-16 max-w-3xl">

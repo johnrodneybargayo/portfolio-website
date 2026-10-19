@@ -1,8 +1,6 @@
 'use client';
 
 import Footer from '@/app/components/Footer';
-import Stars from '@/app/components/Stars';
-import Shapes3D from '@/app/components/Shapes3D';
 import Image from 'next/image';
 
 export default function AboutPage() {
@@ -70,18 +68,12 @@ export default function AboutPage() {
   ];
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-slate-950 antialiased">
+    <main className="legacy-page about-page relative min-h-screen antialiased">
       {/* Devicon stylesheet (loaded once) */}
       <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
       />
-
-      {/* Ambient background */}
-      <Stars />
-      <Shapes3D />
-      <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-[40rem] w-[40rem] rounded-full bg-blue-500/10 blur-3xl" />
-      <div className="pointer-events-none absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/50 to-transparent" />
 
       <section className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 pt-24 pb-20 md:pt-28 md:pb-24">
         {/* Heading + portrait, side by side to close the gap */}
