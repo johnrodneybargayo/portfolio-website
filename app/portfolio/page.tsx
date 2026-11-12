@@ -55,6 +55,14 @@ export default function PortfolioPage() {
       image: 'https://api.microlink.io?url=https://naomichristiina.com&screenshot=true&meta=false&embed=screenshot.url',
     },
     {
+      id: 18,
+      title: 'Catalina Media Members',
+      link: 'https://catalina-media-members.vercel.app',
+      category: 'Community',
+      description: 'Membership platform for Catalina Media',
+      image: 'https://api.microlink.io?url=https://catalina-media-members.vercel.app&screenshot=true&meta=false&embed=screenshot.url',
+    },
+    {
       id: 8,
       title: 'Peru Dating',
       link: 'https://perudating.com/',

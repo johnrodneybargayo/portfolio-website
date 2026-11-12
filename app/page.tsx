@@ -16,6 +16,12 @@ const projects = [
     image: 'https://api.microlink.io?url=https://jayabbasi.me&screenshot=true&meta=false&embed=screenshot.url',
     href: 'https://jayabbasi.me',
   },
+  {
+    title: 'Catalina Media Members',
+    type: 'Membership platform',
+    image: 'https://api.microlink.io?url=https://catalina-media-members.vercel.app&screenshot=true&meta=false&embed=screenshot.url',
+    href: 'https://catalina-media-members.vercel.app',
+  },
 ];
 
 const capabilities = ['WordPress', 'Shopify', 'Wix', 'Squarespace', 'Framer', 'Custom builds'];
