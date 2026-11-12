@@ -47,20 +47,20 @@ export default function PortfolioPage() {
       image: 'https://api.microlink.io?url=https://bangkok-women.com/&screenshot=true&meta=false&embed=screenshot.url',
     },
     {
+      id: 17,
+      title: 'Naomi Christiina',
+      link: 'https://naomichristiina.com',
+      category: 'Portfolio',
+      description: 'Personal portfolio website',
+      image: 'https://api.microlink.io?url=https://naomichristiina.com&screenshot=true&meta=false&embed=screenshot.url',
+    },
+    {
       id: 8,
       title: 'Peru Dating',
       link: 'https://perudating.com/',
       category: 'Social',
       description: 'Dating platform',
       image: 'https://api.microlink.io?url=https://perudating.com/&screenshot=true&meta=false&embed=screenshot.url',
-    },
-    {
-      id: 10,
-      title: 'Labour Hire and Recruitment',
-      link: 'https://labourhireandrecruitment.com.au',
-      category: 'Business Solution',
-      description: 'Recruitment platform',
-      image: 'https://api.microlink.io?url=https://labourhireandrecruitment.com.au&screenshot=true&meta=false&embed=screenshot.url',
     },
     {
       id: 12,
